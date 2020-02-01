@@ -22,11 +22,24 @@ textarea {
   }
 }
 @media screen and (min-width: 1472px) {
-  .is-2-column .container {
+  `` .is-3-column .container,
+  同时为了让navbar居中把在同一个文件中@media screen and (mid-width: screen-fullhd)的部分里把@media screen and (min-width: screen-fullhd) 部分改成 .is-3-column .container,
+  ```css .is-3-column .container {
+    max-width: 1600px;
+    margin-left: 2rem;
+    margin-right: 2rem;
+  }
+  `` .is-2-column .container,
+  同时为了让navbar居中把在同一个文件中@media screen and (mid-width: screen-fullhd)的部分里把@media screen and (min-width: screen-fullhd) 部分改成 .is-2-column .container,
+  ```css .is-2-column .container {
     max-width: 1152px;
     width: 1152px;
+    margin-left: auto;
+    margin-right: auto;
   }
-  .is-1-column .container {
+  `` .is-1-column .container,
+  同时为了让navbar居中把在同一个文件中@media screen and (mid-width: screen-fullhd)的部分里把@media screen and (min-width: screen-fullhd) 部分改成 .is-1-column .container,
+  ```css .is-1-column .container {
     max-width: 960px;
     width: 960px;
   }
@@ -202,6 +215,7 @@ img.thumbnail {
 }
 .article .content {
   font-size: 1.1rem;
+  letter-spacing: 0.08rem;
 }
 .article .content blockquote.pullquote {
   float: right;
