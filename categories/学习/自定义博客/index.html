@@ -7,21 +7,16 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>点云采样 - Hexo</title>
+<title>分类: 自定义博客 - Hexo</title>
 
 
-    <meta name="description" content="有关点云采样的方法： 格点采样、均匀采样、几何采样">
-<meta property="og:type" content="article">
-<meta property="og:title" content="点云采样">
-<meta property="og:url" content="http://yoursite.com/2020/02/01/%E7%82%B9%E4%BA%91%E9%87%87%E6%A0%B7/index.html">
+    <meta property="og:type" content="website">
+<meta property="og:title" content="Hexo">
+<meta property="og:url" content="http://yoursite.com/categories/%E5%AD%A6%E4%B9%A0/%E8%87%AA%E5%AE%9A%E4%B9%89%E5%8D%9A%E5%AE%A2/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="有关点云采样的方法： 格点采样、均匀采样、几何采样">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="http://yoursite.com/images/og_image.png">
-<meta property="article:published_time" content="2020-02-01T07:40:40.000Z">
-<meta property="article:modified_time" content="2020-02-01T09:00:00.000Z">
 <meta property="article:author" content="John Doe">
-<meta property="article:tag" content="点云">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="http://yoursite.com/images/og_image.png">
 
@@ -81,7 +76,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/harrylin.ico" alt="点云采样" height="28">
+                <img src="/images/harrylin.ico" alt="Hexo" height="28">
             
             </a>
         </div>
@@ -130,28 +125,42 @@
     <section class="section">
         <div class="container">
             <div class="columns">
-                <div class="column is-10-tablet is-10-desktop is-8-widescreen has-order-2 column-main">
+                <div class="column is-10-tablet is-10-desktop is-8-widescreen has-order-2 column-main"><div class="card">
+    <div class="card-content">
+        <nav class="breadcrumb" aria-label="breadcrumbs">
+        <ul>
+            <li><a href="/categories">分类</a></li>
+            
+            <li><a href="/categories/%E5%AD%A6%E4%B9%A0/">学习</a></li>
+            
+            <li class="is-active"><a href="#" aria-current="page">自定义博客</a></li>
+        </ul>
+        </nav>
+    </div>
+</div>
+
+    
 <div class="card">
     
     <div class="card-content article ">
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <time class="level-item has-text-grey" datetime="2020-02-01T07:40:40.000Z">2020-02-01</time>
+                <time class="level-item has-text-grey" datetime="2020-02-02T07:33:40.000Z">2020-02-02</time>
                 
                     <i class="fas fa-calendar-check">&nbsp</i>
-                    <time class="level-item has-text-grey" datetime="2020-02-01T09:00:00.000Z">2020-02-01</time>
+                    <time class="level-item has-text-grey" datetime="2020-02-02T13:23:44.016Z">2020-02-02</time>
                 
                 
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/%E5%AD%A6%E4%B9%A0/">学习</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/%E5%AD%A6%E4%B9%A0/%E7%82%B9%E4%BA%91/">点云</a>
+                <a class="has-link-grey -link" href="/categories/%E5%AD%A6%E4%B9%A0/">学习</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/%E5%AD%A6%E4%B9%A0/%E8%87%AA%E5%AE%9A%E4%B9%89%E5%8D%9A%E5%AE%A2/">自定义博客</a>
                 </div>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    6 分钟 读完 (大约 880 个字)
+                    3 分钟 读完 (大约 473 个字)
                 </span>
                 
                 
@@ -160,125 +169,77 @@
         
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                点云采样
+                <a class="has-link-black-ter" href="/2020/02/02/%E4%B8%BA%E8%87%AA%E5%AE%9A%E4%B9%89%E5%8D%9A%E5%AE%A2%E6%B7%BB%E5%8A%A0%E8%AF%84%E8%AE%BA%E5%8A%9F%E8%83%BD/">为自定义博客添加评论功能</a>
             
         </h1>
         <div class="content">
-            <p>有关点云采样的方法： 格点采样、均匀采样、几何采样</p>
-<a id="more"></a>
-
-<hr>
-<h3 id="格点采样"><a href="#格点采样" class="headerlink" title="格点采样"></a>格点采样</h3><p>格点采样，就是把三维空间用格点离散化，然后在每个格点里采样一个点。具体方法如下：</p>
-<ol>
-<li><p>创建格点：如中间图所示，计算点云的包围盒，然后把包围盒离散成小格子。格子的长宽高可以用户设定，也可以通过设定包围盒三个方向的格点数来求得。</p>
-</li>
-<li><p>每个小格子包含了若干个点，取离格子中心点最近的点为采样点，如右图所示。   </p>
-</li>
-</ol>
-<p><img src="https://i.loli.net/2020/01/27/XTmGbjBedcfJuDp.png" alt="image.png"></p>
-<p>格点采样的特点：</p>
-<p>效率非常高</p>
-<ul>
-<li>采样点分布比较均匀，但是均匀性没有均价采样高</li>
-<li>可以通过格点的尺寸控制点间距</li>
-<li>不能精确控制采样点个数</li>
-</ul>
-<hr>
-<h3 id="均匀采样"><a href="#均匀采样" class="headerlink" title="均匀采样"></a>均匀采样</h3><p>均匀采样的方法有很多，并且有一定的方法来评估采样的均匀性。这里介绍一种简单的均匀采样方法，最远点采样。具体方法如下：</p>
-<p>输入点云记为C，采样点集记为S，S初始化为空集。</p>
-<ol>
-<li><p>随机采样一个种子点Seed，放入S。如图1所示。</p>
-</li>
-<li><p>每次采样一个点，放入S。采样的方法是，在集合C-S里，找一点距离集合S距离最远的点。其中点到集合的距离为，这点到集合里所有点距最小的距离。如图2-6所示，采样点S的数量分别为2，4，10，20，100.<br><img src="https://i.loli.net/2020/01/27/T2WyPYkKUeOmdHF.png" alt="image.png"></p>
-</li>
-</ol>
-<p>最远点采样的特点：</p>
-<p>采样点分布均匀</p>
-<ul>
-<li>算法时间复杂度有些高，因为每次采样一个点，都要计算集合到集合之间的距离。可以采用分治的方法来提高效率。</li>
-<li>采样点一般先分布在边界附近，这个性质在有些地方是有用的，比如图元检测里面的点采样。</li>
-</ul>
-<hr>
-<h3 id="几何采样"><a href="#几何采样" class="headerlink" title="几何采样"></a>几何采样</h3><p>几何采样，在点云曲率越大的地方，采样点个数越多。下面介绍一种简单的几何采样方法，具体方法如下：</p>
-<p>输入是一个点云，目标采样数S，采样均匀性U</p>
-<ol>
-<li><p>点云曲率计算比较耗时，这里我们采用了一个简单方法，来近似达到曲率的效果：给每个点计算K邻域，然后计算点到邻域点的法线夹角值。曲率越大的地方，这个夹角值就越大。</p>
-</li>
-<li><p>设置一个角度阈值，比如5度。点的邻域夹角值大于这个阈值的点，被放入几何特征区域G。这样点云就分成了两部分，几何特征区域G和其它区域。</p>
-</li>
-<li><p>均匀采样几何特征区域G和其它区域，采样数分别为S * (1 - U)，S * U。</p>
-</li>
-</ol>
-<p><img src="https://i.loli.net/2020/01/27/Lb51viAFlK4mVC3.png" alt="image.png"></p>
-<p>这个采样方法的特点：</p>
-<ul>
-<li>几何特征越明显的区域，采样点个数分布越多</li>
-<li>计算效率高</li>
-<li>采样点局部分布是均匀的</li>
-<li>稳定性高：通过几何特征区域的划分，使得采样结果抗噪性更强</li>
-</ul>
-
+            <p>为自定义博客添加评论功能,介绍基本的方法，主要使用gitalk来实现</p>
         </div>
         
-        <div class="level is-size-7 is-uppercase">
+        
+        <div class="level is-mobile">
             <div class="level-start">
                 <div class="level-item">
-                    <span class="is-size-6 has-text-grey has-mr-7">#</span>
-                    <a class="has-link-grey -link" href="/tags/%E7%82%B9%E4%BA%91/" rel="tag">点云</a>
+                <a class="button is-size-7 is-light" href="/2020/02/02/%E4%B8%BA%E8%87%AA%E5%AE%9A%E4%B9%89%E5%8D%9A%E5%AE%A2%E6%B7%BB%E5%8A%A0%E8%AF%84%E8%AE%BA%E5%8A%9F%E8%83%BD/#more">阅读更多</a>
                 </div>
             </div>
         </div>
         
         
-        
-        <div class="social-share"></div>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/css/share.min.css">
-<script src="https://cdn.jsdelivr.net/npm/social-share.js@1.0.16/dist/js/social-share.min.js"></script>
-        
     </div>
 </div>
 
 
 
+
+
+
+
+
+    
 <div class="card">
-    <div class="card-content">
-        <h3 class="menu-label has-text-centered">喜欢这篇文章？打赏一下作者吧</h3>
-        <div class="buttons is-centered">
+    
+    <div class="card-content article ">
+        
+        <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
+            <div class="level-left">
+                <time class="level-item has-text-grey" datetime="2020-02-02T07:33:40.000Z">2020-02-02</time>
+                
+                    <i class="fas fa-calendar-check">&nbsp</i>
+                    <time class="level-item has-text-grey" datetime="2020-02-02T12:35:31.788Z">2020-02-02</time>
+                
+                
+                <div class="level-item">
+                <a class="has-link-grey -link" href="/categories/%E5%AD%A6%E4%B9%A0/">学习</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/%E5%AD%A6%E4%B9%A0/%E8%87%AA%E5%AE%9A%E4%B9%89%E5%8D%9A%E5%AE%A2/">自定义博客</a>
+                </div>
+                
+                
+                <span class="level-item has-text-grey">
+                    
+                    
+                    4 分钟 读完 (大约 571 个字)
+                </span>
+                
+                
+            </div>
+        </div>
+        
+        <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                
-<a class="button is-info donate">
-    <span class="icon is-small">
-        <i class="fab fa-alipay"></i>
-    </span>
-    <span>支付宝</span>
-    <div class="qrcode"><img src="/images/alipay.jpg" alt="支付宝"></div>
-</a>
-
-                
-                
-<a class="button is-success donate">
-    <span class="icon is-small">
-        <i class="fab fa-weixin"></i>
-    </span>
-    <span>微信</span>
-    <div class="qrcode"><img src="/images/wechat.jpg" alt="微信"></div>
-</a>
-
-                
+                <a class="has-link-black-ter" href="/2020/02/02/github+hexo+icarus%E5%88%9B%E5%BB%BA%E8%87%AA%E5%AE%9A%E4%B9%89blog/">Github+Hexo+icarus创建自定义blog</a>
+            
+        </h1>
+        <div class="content">
+            <p>使用Github+Hexo+icarus创建自定义blog</p>
         </div>
-    </div>
-</div>
-
-
-
-<div class="card card-transparent">
-    <div class="level post-navigation is-flex-wrap is-mobile">
         
-        <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2020/02/02/github+hexo+icarus%E5%88%9B%E5%BB%BA%E8%87%AA%E5%AE%9A%E4%B9%89blog/">
-                <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">Github+Hexo+icarus创建自定义blog</span>
-            </a>
+        
+        <div class="level is-mobile">
+            <div class="level-start">
+                <div class="level-item">
+                <a class="button is-size-7 is-light" href="/2020/02/02/github+hexo+icarus%E5%88%9B%E5%BB%BA%E8%87%AA%E5%AE%9A%E4%B9%89blog/#more">阅读更多</a>
+                </div>
+            </div>
         </div>
         
         
@@ -287,29 +248,11 @@
 
 
 
-<div class="card">
-    <div class="card-content">
-        <h3 class="title is-5 has-text-weight-normal">评论</h3>
-        
-<div id="comment-container"></div>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.4.1/dist/gitalk.css">
-<script src="https://cdn.jsdelivr.net/npm/gitalk@1.4.1/dist/gitalk.min.js"></script>
-<script>
-    var gitalk = new Gitalk({
-        clientID: 'bac59b9114cfee309c54',
-        clientSecret: '2cf48e13436b28376f072ac3458ba37cff59f37b',
-        id: 'ccfb4214dcda7b433866c31ba03b539d',
-        repo: 'harrylin-hyl.github.io',
-        owner: 'harrylin-hyl',
-        admin: "harrylin-hyl",
-        createIssueManually: true,
-        distractionFreeMode: true
-    })
-    gitalk.render('comment-container')
-</script>
 
-    </div>
-</div>
+
+
+
+
 </div>
                 
 
@@ -808,7 +751,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/harrylin.ico" alt="点云采样" height="28">
+                    <img src="/images/harrylin.ico" alt="Hexo" height="28">
                 
                 </a>
                 <p class="is-size-7">
