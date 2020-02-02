@@ -278,19 +278,20 @@
         <h3 class="title is-5 has-text-weight-normal">评论</h3>
         
 <div id="comment-container"></div>
-<link rel="stylesheet" href="https://jjeejj.github.io/css/gitment.css">
-<script src="https://www.wenjunjiang.win/js/gitment.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk@1.4.1/dist/gitalk.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk@1.4.1/dist/gitalk.min.js"></script>
 <script>
-	var gitment = new Gitment({
-		id: 'ccfb4214dcda7b433866c31ba03b539d',
-		owner: 'harrylin-hyl',
-		repo: 'harrylin-hyl.github.io',
-		oauth: {
-			client_id: 'bac59b9114cfee309c54',
-			client_secret: '2cf48e13436b28376f072ac3458ba37cff59f37b',
-		},
-	})
-	gitment.render('comment-container')
+    var gitalk = new Gitalk({
+        clientID: 'bac59b9114cfee309c54',
+        clientSecret: '2cf48e13436b28376f072ac3458ba37cff59f37b',
+        id: 'ccfb4214dcda7b433866c31ba03b539d',
+        repo: 'harrylin-hyl.github.io',
+        owner: 'harrylin-hyl',
+        admin: "harrylin-hyl",
+        createIssueManually: true,
+        distractionFreeMode: true
+    })
+    gitalk.render('comment-container')
 </script>
 
     </div>
