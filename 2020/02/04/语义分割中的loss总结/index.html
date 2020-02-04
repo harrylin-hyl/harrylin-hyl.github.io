@@ -7,23 +7,23 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>点云采样 - harrylin&#39;s blog</title>
+<title>语义分割中的损失 - harrylin&#39;s blog</title>
 
 
-    <meta name="description" content="有关点云采样的方法： 格点采样、均匀采样、几何采样">
+    <meta name="description" content="有关图像语义分割的一系列改进loss">
 <meta property="og:type" content="article">
-<meta property="og:title" content="点云采样">
-<meta property="og:url" content="http://yoursite.com/2020/02/01/%E7%82%B9%E4%BA%91%E9%87%87%E6%A0%B7/index.html">
+<meta property="og:title" content="语义分割中的损失">
+<meta property="og:url" content="http://yoursite.com/2020/02/04/%E8%AF%AD%E4%B9%89%E5%88%86%E5%89%B2%E4%B8%AD%E7%9A%84loss%E6%80%BB%E7%BB%93/index.html">
 <meta property="og:site_name" content="harrylin&#39;s blog">
-<meta property="og:description" content="有关点云采样的方法： 格点采样、均匀采样、几何采样">
+<meta property="og:description" content="有关图像语义分割的一系列改进loss">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://raw.githubusercontent.com/harrylin-hyl/FigureBed/master/image/20200204164422.png">
-<meta property="article:published_time" content="2020-02-01T07:40:40.000Z">
-<meta property="article:modified_time" content="2020-02-01T09:00:00.000Z">
+<meta property="og:image" content="http://yoursite.com/(https:/raw.githubusercontent.com/harrylin-hyl/FigureBed/master/image/20200204202818.png)">
+<meta property="article:published_time" content="2020-02-04T12:26:40.000Z">
+<meta property="article:modified_time" content="2020-02-04T12:28:29.084Z">
 <meta property="article:author" content="harrylin">
-<meta property="article:tag" content="点云">
+<meta property="article:tag" content="图像语义分割">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://raw.githubusercontent.com/harrylin-hyl/FigureBed/master/image/20200204164422.png">
+<meta name="twitter:image" content="http://yoursite.com/(https:/raw.githubusercontent.com/harrylin-hyl/FigureBed/master/image/20200204202818.png)">
 
 
 
@@ -82,7 +82,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/harrylin.ico" alt="点云采样" height="28">
+                <img src="/images/harrylin.ico" alt="语义分割中的损失" height="28">
             
             </a>
         </div>
@@ -141,27 +141,27 @@
     <div class="card-content article ">
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
                         
-                            <i class="fas fa-angle-double-right"></i>点云采样
+                            <i class="fas fa-angle-double-right"></i>语义分割中的损失
                         
                     </h1>
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <!-- <time class="level-item has-text-grey" datetime="2020-02-01T07:40:40.000Z">2020-02-01</time> -->
-                <time class="level-item has-text-grey" datetime="2020-02-01T07:40:40.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-02-01</time>
+                <!-- <time class="level-item has-text-grey" datetime="2020-02-04T12:26:40.000Z">2020-02-04</time> -->
+                <time class="level-item has-text-grey" datetime="2020-02-04T12:26:40.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-02-04</time>
                 
-                <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-02-01T09:00:00.000Z"><i class="far fa-calendar-check">&nbsp;</i>2020-02-01</time>
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-02-04T12:28:29.084Z"><i class="far fa-calendar-check">&nbsp;</i>2020-02-04</time>
                 
                 
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/%E5%AD%A6%E4%B9%A0/">学习</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/%E5%AD%A6%E4%B9%A0/%E7%82%B9%E4%BA%91/">点云</a>
+                <a class="has-link-grey -link" href="/categories/%E5%AD%A6%E4%B9%A0/">学习</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/%E5%AD%A6%E4%B9%A0/%E5%9B%BE%E5%83%8F%E8%AF%AD%E4%B9%89%E5%88%86%E5%89%B2/">图像语义分割</a>
                 </div>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    6 分钟 读完 (大约 880 个字)
+                    9 分钟 读完 (大约 1384 个字)
                 </span>
                 
                 
@@ -170,62 +170,50 @@
         
         <!-- <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                点云采样
+                语义分割中的损失
              -->
         </h1>
         <div class="content">
-            <p>有关点云采样的方法： 格点采样、均匀采样、几何采样</p>
+            <p>有关图像语义分割的一系列改进loss</p>
 <a id="more"></a>
-<hr>
-<h2 id="格点采样"><a href="#格点采样" class="headerlink" title="格点采样"></a>格点采样</h2><p>格点采样，就是把三维空间用格点离散化，然后在每个格点里采样一个点。具体方法如下：</p>
-<ol>
-<li><p>创建格点：如中间图所示，计算点云的包围盒，然后把包围盒离散成小格子。格子的长宽高可以用户设定，也可以通过设定包围盒三个方向的格点数来求得。</p>
-</li>
-<li><p>每个小格子包含了若干个点，取离格子中心点最近的点为采样点，如右图所示。   </p>
-</li>
-</ol>
-<p><img src="https://i.loli.net/2020/01/27/XTmGbjBedcfJuDp.png" alt="image.png"></p>
-<p>格点采样的特点：</p>
-<p>效率非常高</p>
-<ul>
-<li>采样点分布比较均匀，但是均匀性没有均价采样高</li>
-<li>可以通过格点的尺寸控制点间距</li>
-<li>不能精确控制采样点个数</li>
+
+<h2 id="常用loss"><a href="#常用loss" class="headerlink" title="常用loss:"></a>常用loss:</h2><ul>
+<li>CE</li>
+<li>BCE</li>
+<li>WCE</li>
+<li>Focal loss</li>
+<li>Dice loss</li>
+<li>IOU loss</li>
+<li>Tversky loss</li>
+<li>敏感性–特异性 loss</li>
+<li>Generalized Dice loss</li>
+<li>BCE + Dice loss</li>
+<li>Dice + Focal loss</li>
+<li>Exponential Logarithmic loss<br>以上部分有一篇博客讲得比较清楚：<br>原文博客链接: (<a href="https://blog.csdn.net/m0_37477175/article/details/83004746">https://blog.csdn.net/m0_37477175/article/details/83004746</a>)</li>
 </ul>
 <hr>
-<h2 id="均匀采样"><a href="#均匀采样" class="headerlink" title="均匀采样"></a>均匀采样</h2><p>均匀采样的方法有很多，并且有一定的方法来评估采样的均匀性。这里介绍一种简单的均匀采样方法，最远点采样。具体方法如下：</p>
-<p>输入点云记为C，采样点集记为S，S初始化为空集。</p>
-<ol>
-<li><p>随机采样一个种子点Seed，放入S。如图1所示。</p>
-</li>
-<li><p>每次采样一个点，放入S。采样的方法是，在集合C-S里，找一点距离集合S距离最远的点。其中点到集合的距离为，这点到集合里所有点距最小的距离。如图2-6所示，采样点S的数量分别为2，4，10，20，100.<br><img src="https://i.loli.net/2020/01/27/T2WyPYkKUeOmdHF.png" alt="image.png"></p>
-</li>
-</ol>
-<p>最远点采样的特点：</p>
-<p>采样点分布均匀</p>
 <ul>
-<li>算法时间复杂度有些高，因为每次采样一个点，都要计算集合到集合之间的距离。可以采用分治的方法来提高效率。</li>
-<li>采样点一般先分布在边界附近，这个性质在有些地方是有用的，比如图元检测里面的点采样。</li>
+<li>Lov´asz-Softmaxloss<br>请看我的另一篇博客：（<a href="https://blog.csdn.net/weixin_41134246/article/details/103280203）">https://blog.csdn.net/weixin_41134246/article/details/103280203）</a><h2 id="对采样进行改进的loss"><a href="#对采样进行改进的loss" class="headerlink" title="对采样进行改进的loss"></a>对采样进行改进的loss</h2></li>
 </ul>
 <hr>
-<h2 id="几何采样"><a href="#几何采样" class="headerlink" title="几何采样"></a>几何采样</h2><p>几何采样，在点云曲率越大的地方，采样点个数越多。下面介绍一种简单的几何采样方法，具体方法如下：</p>
-<p>输入是一个点云，目标采样数S，采样均匀性U</p>
-<ol>
-<li><p>点云曲率计算比较耗时，这里我们采用了一个简单方法，来近似达到曲率的效果：给每个点计算K邻域，然后计算点到邻域点的法线夹角值。曲率越大的地方，这个夹角值就越大。</p>
-</li>
-<li><p>设置一个角度阈值，比如5度。点的邻域夹角值大于这个阈值的点，被放入几何特征区域G。这样点云就分成了两部分，几何特征区域G和其它区域。</p>
-</li>
-<li><p>均匀采样几何特征区域G和其它区域，采样数分别为S * (1 - U)，S * U。</p>
-</li>
-</ol>
-<p><img src="https://i.loli.net/2020/01/27/Lb51viAFlK4mVC3.png" alt="image.png"></p>
-<p>这个采样方法的特点：</p>
+<h3 id="Boundary-loss"><a href="#Boundary-loss" class="headerlink" title="Boundary loss"></a>Boundary loss</h3><hr>
+<p> 提出generalized Dice loss，对Dice loss在计算中加上权重，主要是为了解决样本不平衡问题。<br> <img src="https://img-blog.csdnimg.cn/20191128153655300.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MTEzNDI0Ng==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br> <img src="https://img-blog.csdnimg.cn/20191128153713206.png" alt="在这里插入图片描述"><br> 根据这一个权重函数可以看出来，$r_{ln}$代表这一个类的label map之和，当这一个类别像素值少的时候权重会变大，像素值大的时候权重会变小。<br> 主要还是应用权重来解决不平衡的问题。</p>
 <ul>
-<li>几何特征越明显的区域，采样点个数分布越多</li>
-<li>计算效率高</li>
-<li>采样点局部分布是均匀的</li>
-<li>稳定性高：通过几何特征区域的划分，使得采样结果抗噪性更强</li>
+<li>还有一个部分是边界损失<br>  想法比较简单，用groundtruth计算出边界部分，然后在预测值对这一部分进行损失计算，对各像素损失求和。<br>  <img src="https://img-blog.csdnimg.cn/20191129095820991.png" alt="在这里插入图片描述"><br>代码链接：（<a href="https://github.com/LIVIAETS/surface-loss）">https://github.com/LIVIAETS/surface-loss）</a></li>
 </ul>
+<hr>
+<h3 id="ConservativeLoss"><a href="#ConservativeLoss" class="headerlink" title="ConservativeLoss"></a>ConservativeLoss</h3><hr>
+<p>核心思想是为了在不同领域的适应能力中，有较强的泛化性。对表现极度好的结果进行惩罚，从而鼓励中等表现得结果。<br><img src="https://img-blog.csdnimg.cn/20191128154950187.png" alt="在这里插入图片描述"><br>如图所示，根据置信度来计算CL loss，相应得进行惩罚。$\lambda$为5， $a$为$e$。</p>
+<hr>
+<h3 id="combo-loss"><a href="#combo-loss" class="headerlink" title="combo loss"></a>combo loss</h3><p>代码地址：<a href="https://github.com/asgsaeid/ComboLoss/blob/master/combo_loss.py">https://github.com/asgsaeid/ComboLoss/blob/master/combo_loss.py</a><br><img src="https://img-blog.csdnimg.cn/20191202221318698.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MTEzNDI0Ng==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>dice loss + weighted ce<br>$\beta$控制 假阳性和假阴性的权重，大于0.5惩罚假阳性，小于0.5惩罚假阴性。<br>$a$控制dice loss 和weighted ce loss的权重。</p>
+<hr>
+<h2 id="边界部分有权重的loss"><a href="#边界部分有权重的loss" class="headerlink" title="边界部分有权重的loss"></a>边界部分有权重的loss</h2><hr>
+<h3 id="Active-Contour-Loss"><a href="#Active-Contour-Loss" class="headerlink" title="Active Contour Loss"></a>Active Contour Loss</h3><p>代码地址：（<a href="https://github.com/xuuuuuuchen/Active-Contour-Loss/blob/master/Active-Contour-Loss.py）">https://github.com/xuuuuuuchen/Active-Contour-Loss/blob/master/Active-Contour-Loss.py）</a><br><img src="https://img-blog.csdnimg.cn/20191129091628652.png" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20191129091654303.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MTEzNDI0Ng==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>    - 最终的loss是Length 和Region 的和，代码中$\lambda$设为的1，这是一个超参数。<br>    - 首先看一下整个损失，它的计算方式都是用的差的平方的形式。<br>    - 然后Length loss部分，只用了pred的信息，最小化梯度的大小，在这里我的理解是，它想达到的目的是让物体的内部尽量平滑，只有边界部分有这个梯度的变化。<br>    - 接着是Region部分，使用label的监督信息对每一个点进行监督训练。<br>    -    总结一下整个地方，感觉在边界部分，这两个Loss有冲突的地方，Length损失在边界部分会变大，但是它因为没有监督信息，它趋向于对所有位置都平滑处理，但是Region部分有监督信息，为了让边界部分损失变小会将物体和边界分开。也因为是用的差的平方的形式，边界部分的预测值概率应该是平滑下降的，骤降的loss太大，也就是惩罚太大。感觉是对整个预测结果作了一个平滑处理。</p>
+<hr>
+<h3 id="Distance-Map-Loss-Penalty-Term-for-Semantic-Segmentation"><a href="#Distance-Map-Loss-Penalty-Term-for-Semantic-Segmentation" class="headerlink" title="Distance Map Loss Penalty Term for Semantic Segmentation"></a>Distance Map Loss Penalty Term for Semantic Segmentation</h3><p><img src="https://img-blog.csdnimg.cn/20191202152827523.png" alt="在这里插入图片描述"><br>$\phi$代表 边界的距离图，如图所示：<br><img src="https://img-blog.csdnimg.cn/20191202153129669.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MTEzNDI0Ng==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>结合上面的公式，就代表着边界部分的权重会高于其他地方，其他的没有改动。</p>
+<hr>
+<h3 id="NonAdjacencyLoss"><a href="#NonAdjacencyLoss" class="headerlink" title="NonAdjacencyLoss"></a>NonAdjacencyLoss</h3><p>代码地址：<a href="https://github.com/trypag/NonAdjLoss">https://github.com/trypag/NonAdjLoss</a><br>创新点是加入了各个类之间的邻接矩阵，用一个子网络去预测这个矩阵。即可以监督学习也可以半监督的学习。<br><img src="https://img-blog.csdnimg.cn/20191202205318904.png" alt="在这里插入图片描述"><br>前面一部分是一般的损失，如dice或交叉熵等，后面是用邻接矩阵加的限定损失。</p>
+<p><img src="https://img-blog.csdnimg.cn/20191202205611504.png" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20191202205636805.png" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20191202205650599.png" alt="在这里插入图片描述"><br>求$a_{ij}\left( \phi \right)$这个过程是离线的过程，根据总的有标签的数据求一个最后求和的邻接矩阵“模板”。形成一个先验的知识，对于半监督无标签时，这个G(w)这一项的损失也可以根据这个“模板”进行计算。对于医疗图像来说，这样做也是有一定道理的。<br>但是我自己认为这样做会无法考虑到空间中的信息，只是考虑了类与类之间的信息。</p>
 
         </div>
         
@@ -235,11 +223,11 @@
                     </li>
                     <li class="post-copyright-link">
                     <strong>本文链接：</strong>
-                    <a href="" title="{{ page.title }}">点云采样</a>
+                    <a href="" title="{{ page.title }}">语义分割中的损失</a>
                     </li>
                     <li class="post-copyright-link">
                     <strong>发布时间：</strong>
-                    <a href="" title="{{ page.title }}">2020年2月1日 - 15时02分</a>
+                    <a href="" title="{{ page.title }}">2020年2月4日 - 20时02分</a>
                     </li>
                     <li class="post-copyright-license">
                     <strong>版权声明： </strong>
@@ -254,7 +242,7 @@
                 <div class="level-item">
                     <span class="is-size-6 has-text-grey has-mr-7">#</span>
                     <!-- <i class="fas fa-tags has-text-grey"></i>&nbsp; -->
-                    <a class="has-link-grey -link" href="/tags/%E7%82%B9%E4%BA%91/" rel="tag">点云</a>
+                    <a class="has-link-grey -link" href="/tags/%E5%9B%BE%E5%83%8F%E8%AF%AD%E4%B9%89%E5%88%86%E5%89%B2/" rel="tag">图像语义分割</a>
                 </div>
             </div>
         </div>
@@ -304,13 +292,13 @@
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
         
-        <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2020/02/02/%E4%B8%BA%E8%87%AA%E5%AE%9A%E4%B9%89%E5%8D%9A%E5%AE%A2%E6%B7%BB%E5%8A%A0%E8%AF%84%E8%AE%BA%E5%8A%9F%E8%83%BD/">
-                <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">为自定义博客添加评论功能</span>
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2020/02/02/github+hexo+icarus%E5%88%9B%E5%BB%BA%E8%87%AA%E5%AE%9A%E4%B9%89blog/">
+                <span class="level-item">Github+Hexo+icarus创建自定义blog</span>
+                <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
-        
         
     </div>
 </div>
@@ -328,7 +316,7 @@
     var gitalk = new Gitalk({
         clientID: 'bac59b9114cfee309c54',
         clientSecret: '2cf48e13436b28376f072ac3458ba37cff59f37b',
-        id: 'ccfb4214dcda7b433866c31ba03b539d',
+        id: '5aed01ee587cd45daab13949dc92a962',
         repo: 'harrylin-hyl.github.io',
         owner: 'harrylin-hyl',
         admin: "harrylin-hyl",
@@ -454,18 +442,42 @@
                     目录
                 </h3>
                 <ul class="menu-list"><li>
-        <a class="is-flex" href="#格点采样">
+        <a class="is-flex" href="#常用loss">
         <span class="has-mr-6">1</span>
-        <span>格点采样</span>
+        <span>常用loss:</span>
         </a></li><li>
-        <a class="is-flex" href="#均匀采样">
+        <a class="is-flex" href="#对采样进行改进的loss">
         <span class="has-mr-6">2</span>
-        <span>均匀采样</span>
+        <span>对采样进行改进的loss</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Boundary-loss">
+        <span class="has-mr-6">2.1</span>
+        <span>Boundary loss</span>
         </a></li><li>
-        <a class="is-flex" href="#几何采样">
+        <a class="is-flex" href="#ConservativeLoss">
+        <span class="has-mr-6">2.2</span>
+        <span>ConservativeLoss</span>
+        </a></li><li>
+        <a class="is-flex" href="#combo-loss">
+        <span class="has-mr-6">2.3</span>
+        <span>combo loss</span>
+        </a></li></ul></li><li>
+        <a class="is-flex" href="#边界部分有权重的loss">
         <span class="has-mr-6">3</span>
-        <span>几何采样</span>
-        </a></li></ul>
+        <span>边界部分有权重的loss</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#Active-Contour-Loss">
+        <span class="has-mr-6">3.1</span>
+        <span>Active Contour Loss</span>
+        </a></li><li>
+        <a class="is-flex" href="#Distance-Map-Loss-Penalty-Term-for-Semantic-Segmentation">
+        <span class="has-mr-6">3.2</span>
+        <span>Distance Map Loss Penalty Term for Semantic Segmentation</span>
+        </a></li><li>
+        <a class="is-flex" href="#NonAdjacencyLoss">
+        <span class="has-mr-6">3.3</span>
+        <span>NonAdjacencyLoss</span>
+        </a></li></ul></li></ul>
             </div>
         </div>
     </div>
@@ -488,7 +500,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/harrylin.ico" alt="点云采样" height="28">
+                    <img src="/images/harrylin.ico" alt="语义分割中的损失" height="28">
                 
                 </a>
                 <p class="is-size-7">
