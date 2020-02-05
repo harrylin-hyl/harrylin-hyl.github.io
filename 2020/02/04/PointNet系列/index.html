@@ -7,23 +7,23 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>为自定义博客添加评论功能 - harrylin&#39;s blog</title>
+<title>PointNet系列方法 - harrylin&#39;s blog</title>
 
 
-    <meta name="description" content="为自定义博客添加评论功能,介绍基本的方法，主要使用gitalk来实现">
+    <meta name="description" content="PointNet系列处理点云的方法:PointNet、PointNet++、Frustum-PointNet和FlowNet3D">
 <meta property="og:type" content="article">
-<meta property="og:title" content="为自定义博客添加评论功能">
-<meta property="og:url" content="http://yoursite.com/2020/02/02/%E4%B8%BA%E8%87%AA%E5%AE%9A%E4%B9%89%E5%8D%9A%E5%AE%A2%E6%B7%BB%E5%8A%A0%E8%AF%84%E8%AE%BA%E5%8A%9F%E8%83%BD/index.html">
+<meta property="og:title" content="PointNet系列方法">
+<meta property="og:url" content="http://yoursite.com/2020/02/04/PointNet%E7%B3%BB%E5%88%97/index.html">
 <meta property="og:site_name" content="harrylin&#39;s blog">
-<meta property="og:description" content="为自定义博客添加评论功能,介绍基本的方法，主要使用gitalk来实现">
+<meta property="og:description" content="PointNet系列处理点云的方法:PointNet、PointNet++、Frustum-PointNet和FlowNet3D">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://raw.githubusercontent.com/harrylin-hyl/FigureBed/master/image/20200204170942.png">
-<meta property="article:published_time" content="2020-02-02T07:33:40.000Z">
-<meta property="article:modified_time" content="2020-02-04T09:10:29.441Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/harrylin-hyl/FigureBed/master/image/20200204164422.png">
+<meta property="article:published_time" content="2020-02-04T12:44:40.000Z">
+<meta property="article:modified_time" content="2020-02-04T12:49:12.650Z">
 <meta property="article:author" content="harrylin">
-<meta property="article:tag" content="hexo">
+<meta property="article:tag" content="点云">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://raw.githubusercontent.com/harrylin-hyl/FigureBed/master/image/20200204170942.png">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/harrylin-hyl/FigureBed/master/image/20200204164422.png">
 
 
 
@@ -82,7 +82,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/harrylin.ico" alt="为自定义博客添加评论功能" height="28">
+                <img src="/images/harrylin.ico" alt="PointNet系列方法" height="28">
             
             </a>
         </div>
@@ -141,27 +141,27 @@
     <div class="card-content article ">
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
                         
-                            <i class="fas fa-angle-double-right"></i>为自定义博客添加评论功能
+                            <i class="fas fa-angle-double-right"></i>PointNet系列方法
                         
                     </h1>
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <!-- <time class="level-item has-text-grey" datetime="2020-02-02T07:33:40.000Z">2020-02-02</time> -->
-                <time class="level-item has-text-grey" datetime="2020-02-02T07:33:40.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-02-02</time>
+                <!-- <time class="level-item has-text-grey" datetime="2020-02-04T12:44:40.000Z">2020-02-04</time> -->
+                <time class="level-item has-text-grey" datetime="2020-02-04T12:44:40.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-02-04</time>
                 
-                <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-02-04T09:10:29.441Z"><i class="far fa-calendar-check">&nbsp;</i>2020-02-04</time>
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-02-04T12:49:12.650Z"><i class="far fa-calendar-check">&nbsp;</i>2020-02-04</time>
                 
                 
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/%E5%AD%A6%E4%B9%A0/">学习</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/%E5%AD%A6%E4%B9%A0/%E8%87%AA%E5%AE%9A%E4%B9%89%E5%8D%9A%E5%AE%A2/">自定义博客</a>
+                <a class="has-link-grey -link" href="/categories/%E5%AD%A6%E4%B9%A0/">学习</a>&nbsp;/&nbsp;<a class="has-link-grey -link" href="/categories/%E5%AD%A6%E4%B9%A0/%E7%82%B9%E4%BA%91/">点云</a>
                 </div>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    3 分钟 读完 (大约 469 个字)
+                    16 分钟 读完 (大约 2361 个字)
                 </span>
                 
                 
@@ -170,37 +170,66 @@
         
         <!-- <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                为自定义博客添加评论功能
+                PointNet系列方法
              -->
         </h1>
         <div class="content">
-            <p>为自定义博客添加评论功能,介绍基本的方法，主要使用gitalk来实现</p>
+            <p>PointNet系列处理点云的方法:PointNet、PointNet++、Frustum-PointNet和FlowNet3D</p>
 <a id="more"></a>
-
-
-<h2 id="介绍一些支持的评论模块"><a href="#介绍一些支持的评论模块" class="headerlink" title="介绍一些支持的评论模块"></a>介绍一些支持的评论模块</h2><p>具体支持哪些可以看icarus/layout/comment文件夹中的一系列文件。如果要加自己的就要自己添加文件。<br>最开始就想用github来作为用户进行评论，然后看到gitment模块，踩了很多坑，然后强烈推荐<strong>gitalk</strong>。因为一些原因gitment的服务器不再维护了，所以工作量就变得很大，不建议使用。具体可以看:</p>
-<ul>
-<li><a href="https://sherry0429.github.io/2019/02/12/gitment%E4%BF%AE%E5%A4%8D/">gitment修复[object ProgressEvent]</a></li>
-<li><a href="https://github.com/imsun/gitment/issues/178">hexo博客的gitment评论开启一直失败</a></li>
-</ul>
-<h2 id="使用hexo-gitalk"><a href="#使用hexo-gitalk" class="headerlink" title="使用hexo + gitalk"></a>使用hexo + gitalk</h2><p><a href="http://liujinkai.com/2017/10/24/gitment-pinglun-chajian/">参考博客</a></p>
-<ol>
-<li><p>首先Github上，注册 OAuth Application<img src="https://raw.githubusercontent.com/harrylin-hyl/FigureBed/master/image/20200202205409.png" alt="20200202205409.png"><br>可以通过这个<a href="https://github.com/settings/applications/new">地址</a>来注册一个应用，按提示填写即可。<br><img src="https://raw.githubusercontent.com/harrylin-hyl/FigureBed/master/image/20200202205310.png" alt="20200202205310.png"></p>
-<p> 成功之后会得到一个client ID 和一个 client secret，在后面的初始化插件时会用到。</p>
-<p> <img src="https://raw.githubusercontent.com/harrylin-hyl/FigureBed/master/image/20200202211756.png" alt="20200202211756.png"></p>
-</li>
-<li><p>修改主题中的_config.yml文件<br>修改coment下面的代码</p>
-<pre><code>comment:
-    type: gitalk
-    owner: xxx (harrylin-hyl)         # (required) GitHub user name
-    repo: xxx (harrylin-hyl.github.io)         # (required) GitHub repository name
-    client_id: xxxxxxx    # (required) OAuth application client id 上面生成的
-    client_secret: xxxxxx # (required) OAuth application client secret 上面生成的
-    admin: xxx (harrylin-hyl) #此账户一般为用户名 GitHub user name 文章中能创建issue需要此用户登录才可以，点了创建issue后刷新一遍才能看到！！！！
-    create_issue_manually: true
-    distraction_free_mode: true</code></pre><p> 重新刷新一下，重启一下hexo就可以了，以下是效果图：<br> <img src="https://raw.githubusercontent.com/harrylin-hyl/FigureBed/master/image/20200202212326.png" alt="20200202212326.png"></p>
-</li>
+<hr>
+<h2 id="1-PointNet系列"><a href="#1-PointNet系列" class="headerlink" title="1. PointNet系列"></a>1. PointNet系列</h2><ul>
+<li>参考：<a href="https://zhuanlan.zhihu.com/p/44809266">https://zhuanlan.zhihu.com/p/44809266</a></li>
+<li>点云三大性质：<ol>
+<li>无序性。点云集合顺序不敏感，意味着处理点云数据的模型需要对数据的不同排列保持不变性。目前文献中使用的方法包括将无序的数据重排序、用数据的所有排列进行数据增强然后使用RNN模型、用对称函数来保证排列不变性。由于第三种方式的简洁性且容易在模型中实现，论文作者选择使用第三种方式，既使用maxpooling这个对称函数来提取点云数据的特征。</li>
+<li>点与点之间的空间关系。一个物体通常由特定空间内的一定数量的点云构成，也就是说这些点云之间存在空间关系。为了能有效利用这种空间关系，论文作者提出了将局部特征和全局特征进行串联的方式来聚合信息。</li>
+<li>不变性。点云数据所代表的目标对某些空间转换应该具有不变性，如旋转和平移。论文作者提出了在进行特征提取之前，先对点云数据进行对齐的方式来保证不变性。对齐操作是通过训练一个小型的网络来得到转换矩阵，并将之和输入点云数据相乘来实现(T-Net)。</li>
 </ol>
+</li>
+</ul>
+<h2 id="2-PointNet"><a href="#2-PointNet" class="headerlink" title="2. PointNet"></a>2. PointNet</h2><p><img src="https://raw.githubusercontent.com/harrylin-hyl/FigureBed/master/image/20200128205630.png" alt="20200128205630.png"></p>
+<ul>
+<li>PointNet的模型结构如上图所示，其关键流程介绍如下：</li>
+</ul>
+<ol>
+<li>输入为一帧的全部点云数据的集合，表示为一个nx3的2d tensor，其中n代表点云数量，3对应xyz坐标。</li>
+<li>输入数据先通过和一个T-Net学习到的转换矩阵相乘来对齐，保证了模型的对特定空间转换的不变性。</li>
+<li>通过多次mlp对各点云数据进行特征提取后，再用一个T-Net对特征进行对齐。</li>
+<li>在特征的各个维度上执行maxpooling操作来得到最终的全局特征。</li>
+<li>对分类任务，将全局特征通过mlp来预测最后的分类分数；对分割任务，将全局特征和之前学习到的各点云的局部特征进行串联，再通过mlp得到每个数据点的分类结果。</li>
+</ol>
+<ul>
+<li>网络重要组成介绍<ol>
+<li>T-Net：针对平移或者旋转情况，设计的自适应网络。可学习的一个旋转矩阵，输出$k_1 * k_2$的矩阵，$k_1$是输入层数，$k_2$是输出层数。</li>
+<li>MLP：多层感知机。图中有share的地方用的是1x1卷积表示，每层共享权重。没有share部分直接用的全连接层。</li>
+<li>分为分类网络和分割网络。分类网络对整个点云分类，分割网络对每一个点分类。顺序和输入点云顺序一致。</li>
+</ol>
+</li>
+</ul>
+<h2 id="3-PointNet"><a href="#3-PointNet" class="headerlink" title="3. PointNet++"></a>3. PointNet++</h2><p><img src="https://raw.githubusercontent.com/harrylin-hyl/FigureBed/master/image/20200128212815.png" alt="20200128212815.png"></p>
+<ul>
+<li><p>网络构成<br>PointNet提取特征的方式是对所有点云数据提取了一个全局的特征，显然，这和目前流行的CNN逐层提取局部特征的方式不一样。受到CNN的启发，作者提出了PointNet++，它能够在不同尺度提取局部特征，通过多层网络结构得到深层特征。PointNet++由以下几个关键部分构成：</p>
+<ol>
+<li>采样层（sampling）<br>激光雷达单帧的数据点可以多达100k个，如果对每一个点都提取局部特征，计算量是非常巨大的。因此，作者提出了先对数据点进行采样。作者使用的采样算法是最远点采样（farthest point sampling, FPS），相对于随机采样，这种采样算法能够更好地覆盖整个采样空间。</li>
+<li>组合层（grouping）<br>为了提取一个点的局部特征，首先需要定义这个点的“局部”是什么。一个图片像素点的局部是其周围一定曼哈顿距离下的像素点，通常由卷积层的卷积核大小确定。同理，点云数据中的一个点的局部由其周围给定半径划出的球形空间内的其他点构成。组合层的作用就是找出通过采样层后的每一个点的所有构成其局部的点，以方便后续对每个局部提取特征。</li>
+<li>特征提取层（feature learning）<br>因为PointNet给出了一个基于点云数据的特征提取网络，因此可以用PointNet对组合层给出的各个局部进行特征提取来得到局部特征。值得注意的是，虽然组合层给出的各个局部可能由不同数量的点构成，但是通过PointNet后都能得到维度一致的特征（由上述K值决定）。</li>
+</ol>
+</li>
+<li><p>上述各层构成了PointNet++的基础处理模块。如果将多个这样的处理模块级联组合起来，PointNet++就能像CNN一样从浅层特征得到深层语义特征。对于分割任务的网络，还需要将下采样后的特征进行上采样，使得原始点云中的每个点都有对应的特征。这个上采样的过程通过最近的k个临近点进行插值计算得到。</p>
+</li>
+</ul>
+<h2 id="4-Frustum-PointNet"><a href="#4-Frustum-PointNet" class="headerlink" title="4. Frustum-PointNet"></a>4. Frustum-PointNet</h2><ul>
+<li>上述的PointNet和PointNet++主要用于点云数据的分类和分割问题，Frustum-PointNet（F-PointNet）将PointNet的应用拓展到了3D目标检测上。目前单纯基于Lidar数据的3D目标检测算法通常对小目标检测效果不佳，为了处理这个问题，F-PointNet提出了结合基于图像的2D检测算法来定位目标，再用其对应的点云数据视锥进行bbox回归的方法来实现3D目标检测。F-PointNet的网络结构如下图所示。<br><img src="https://raw.githubusercontent.com/harrylin-hyl/FigureBed/master/image/20200128220644.png" alt="20200128220644.png"><br>可以看到，F-PointNet主要由以下几部分构成：</li>
+<li>视锥生成（frustum proposal）：<br>首先通过2D目标检测器来定位图片中的目标以及判断它们的类别。对每一个检测到的目标，通过标定好的传感器的内参和它们之间的转换矩阵得到其对应的点云数据中的各点，即点云视锥。作者使用的2D目标检测模型是基于VGG网络的FPN作为特征提取器，并用Fast R-CNN来预测最终的2D bbox。</li>
+<li>3D实例分割（3D instance segmentation）:<br>对每个得到的点云视锥，通过旋转得到以中心视角为坐标轴的点云数据。对转换后的点云数据用PointNet（或PointNet++）进行实例分割。实例分割是一个二分类问题，用于判断每个点属于某个目标或者不属于。</li>
+<li>3D边界框回归（3D box estimation）:<br>将上一步实例分割的结果作为mask得到属于某个实例的所有点云，计算其质心作为新的坐标系原点。通过一个T-Net进行回归得到目标质心和当前坐标原点的残差。将点云平移到计算得到的目标质心后，通过PointNet（或PointNet++）对3D bbox的中心、尺寸和朝向进行回归得到最终的输出。此步骤采用的回归方式和Faster R-CNN中类似，不直接回归，而是回归到不同尺寸和朝向的锚点（anchors）。</li>
+</ul>
+<p>综上所述，F-PointNet是一个多步骤的3D目标检测算法。如下图所示，为了应对点云数据中各个目标的视角不变性和得到更准确的bbox回归（通过缩小需要回归的值的取值范围），算法需要进行三次坐标转换。模型的loss和2D的目标检测一样是包含分类以及回归的多任务loss。同时，作者提出了一种被称为corner loss的损失函数来对目标的中心、朝向和大小进行联合优化，避免由于某一方面的不准确而主导loss。</p>
+<p><img src="https://raw.githubusercontent.com/harrylin-hyl/FigureBed/master/image/20200128220851.png" alt="20200128220851.png"></p>
+<p>详细参考： <a href="https://blog.csdn.net/u011507206/article/details/89106892">https://blog.csdn.net/u011507206/article/details/89106892</a></p>
+<h2 id="5-FlowNet3D-Learning-Scene-Flow-in-3D-Point-Clouds"><a href="#5-FlowNet3D-Learning-Scene-Flow-in-3D-Point-Clouds" class="headerlink" title="5. FlowNet3D: Learning Scene Flow in 3D Point Clouds"></a>5. FlowNet3D: Learning Scene Flow in 3D Point Clouds</h2><p><img src="https://raw.githubusercontent.com/harrylin-hyl/FigureBed/master/image/20200130210653.png" alt="20200130210653.png"></p>
+<ul>
+<li>通过点云预测光流，整个流程如图所示：后融合之后再进行特征聚合输出最后的结果。set_conv用的pointnet++的结构。flow embedding层来进行前后两帧的差异性提取：<br><img src="https://raw.githubusercontent.com/harrylin-hyl/FigureBed/master/image/20200130211306.png" alt="20200130211306.png"><br>set_upconv用上采样和前面下采样的特折进行skip操作。</li>
+</ul>
 
         </div>
         
@@ -210,11 +239,11 @@
                     </li>
                     <li class="post-copyright-link">
                     <strong>本文链接：</strong>
-                    <a href="" title="{{ page.title }}">为自定义博客添加评论功能</a>
+                    <a href="" title="{{ page.title }}">PointNet系列方法</a>
                     </li>
                     <li class="post-copyright-link">
                     <strong>发布时间：</strong>
-                    <a href="" title="{{ page.title }}">2020年2月2日 - 15时02分</a>
+                    <a href="" title="{{ page.title }}">2020年2月4日 - 20时02分</a>
                     </li>
                     <li class="post-copyright-license">
                     <strong>版权声明： </strong>
@@ -229,7 +258,7 @@
                 <div class="level-item">
                     <span class="is-size-6 has-text-grey has-mr-7">#</span>
                     <!-- <i class="fas fa-tags has-text-grey"></i>&nbsp; -->
-                    <a class="has-link-grey -link" href="/tags/hexo/" rel="tag">hexo</a>
+                    <a class="has-link-grey -link" href="/tags/%E7%82%B9%E4%BA%91/" rel="tag">点云</a>
                 </div>
             </div>
         </div>
@@ -279,17 +308,10 @@
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
         
-        <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2020/02/02/github+hexo+icarus%E5%88%9B%E5%BB%BA%E8%87%AA%E5%AE%9A%E4%B9%89blog/">
-                <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">Github+Hexo+icarus创建自定义blog</span>
-            </a>
-        </div>
-        
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2020/02/01/%E7%82%B9%E4%BA%91%E9%87%87%E6%A0%B7/">
-                <span class="level-item">点云采样</span>
+            <a class="level level-item has-link-grey  article-nav-next" href="/2020/02/04/%E8%AF%AD%E4%B9%89%E5%88%86%E5%89%B2%E4%B8%AD%E7%9A%84loss%E6%80%BB%E7%BB%93/">
+                <span class="level-item">语义分割中的损失</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
@@ -310,7 +332,7 @@
     var gitalk = new Gitalk({
         clientID: 'bac59b9114cfee309c54',
         clientSecret: '2cf48e13436b28376f072ac3458ba37cff59f37b',
-        id: '2310d9a9ca9cfec92012355394dd26e3',
+        id: '7673fe78d2bf6029867a78a2b94ae763',
         repo: 'harrylin-hyl.github.io',
         owner: 'harrylin-hyl',
         admin: "harrylin-hyl",
@@ -436,13 +458,25 @@
                     目录
                 </h3>
                 <ul class="menu-list"><li>
-        <a class="is-flex" href="#介绍一些支持的评论模块">
+        <a class="is-flex" href="#1-PointNet系列">
         <span class="has-mr-6">1</span>
-        <span>介绍一些支持的评论模块</span>
+        <span>1. PointNet系列</span>
         </a></li><li>
-        <a class="is-flex" href="#使用hexo-gitalk">
+        <a class="is-flex" href="#2-PointNet">
         <span class="has-mr-6">2</span>
-        <span>使用hexo + gitalk</span>
+        <span>2. PointNet</span>
+        </a></li><li>
+        <a class="is-flex" href="#3-PointNet">
+        <span class="has-mr-6">3</span>
+        <span>3. PointNet++</span>
+        </a></li><li>
+        <a class="is-flex" href="#4-Frustum-PointNet">
+        <span class="has-mr-6">4</span>
+        <span>4. Frustum-PointNet</span>
+        </a></li><li>
+        <a class="is-flex" href="#5-FlowNet3D-Learning-Scene-Flow-in-3D-Point-Clouds">
+        <span class="has-mr-6">5</span>
+        <span>5. FlowNet3D: Learning Scene Flow in 3D Point Clouds</span>
         </a></li></ul>
             </div>
         </div>
@@ -466,7 +500,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/harrylin.ico" alt="为自定义博客添加评论功能" height="28">
+                    <img src="/images/harrylin.ico" alt="PointNet系列方法" height="28">
                 
                 </a>
                 <p class="is-size-7">
