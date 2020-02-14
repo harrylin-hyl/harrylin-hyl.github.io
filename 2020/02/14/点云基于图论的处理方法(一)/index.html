@@ -7,19 +7,19 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>点云采样 - harrylin&#39;s blog</title>
+<title>点云基于图论的处理方法(一) - harrylin&#39;s blog</title>
 
 
-    <meta name="description" content="有关点云采样的方法： 格点采样、均匀采样、几何采样">
+    <meta name="description" content="本系列是按照bilibili上刘永成博士的分享课的论文笔记，主要针对点云基于图论的处理方法。这一部分主要讲解的方法包括：DGCNN">
 <meta property="og:type" content="article">
-<meta property="og:title" content="点云采样">
-<meta property="og:url" content="http://yoursite.com/2020/02/01/%E7%82%B9%E4%BA%91%E9%87%87%E6%A0%B7/index.html">
+<meta property="og:title" content="点云基于图论的处理方法(一)">
+<meta property="og:url" content="http://yoursite.com/2020/02/14/%E7%82%B9%E4%BA%91%E5%9F%BA%E4%BA%8E%E5%9B%BE%E8%AE%BA%E7%9A%84%E5%A4%84%E7%90%86%E6%96%B9%E6%B3%95(%E4%B8%80)/index.html">
 <meta property="og:site_name" content="harrylin&#39;s blog">
-<meta property="og:description" content="有关点云采样的方法： 格点采样、均匀采样、几何采样">
+<meta property="og:description" content="本系列是按照bilibili上刘永成博士的分享课的论文笔记，主要针对点云基于图论的处理方法。这一部分主要讲解的方法包括：DGCNN">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://raw.githubusercontent.com/harrylin-hyl/FigureBed/master/image/20200204164422.png">
-<meta property="article:published_time" content="2020-02-01T07:40:40.000Z">
-<meta property="article:modified_time" content="2020-02-01T09:00:00.000Z">
+<meta property="article:published_time" content="2020-02-14T08:40:40.000Z">
+<meta property="article:modified_time" content="2020-02-14T08:41:38.392Z">
 <meta property="article:author" content="harrylin">
 <meta property="article:tag" content="点云">
 <meta name="twitter:card" content="summary">
@@ -82,7 +82,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/harrylin.ico" alt="点云采样" height="28">
+                <img src="/images/harrylin.ico" alt="点云基于图论的处理方法(一)" height="28">
             
             </a>
         </div>
@@ -141,16 +141,16 @@
     <div class="card-content article ">
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
                         
-                            <i class="fas fa-angle-double-right"></i>点云采样
+                            <i class="fas fa-angle-double-right"></i>点云基于图论的处理方法(一)
                         
                     </h1>
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <!-- <time class="level-item has-text-grey" datetime="2020-02-01T07:40:40.000Z">2020-02-01</time> -->
-                <time class="level-item has-text-grey" datetime="2020-02-01T07:40:40.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-02-01</time>
+                <!-- <time class="level-item has-text-grey" datetime="2020-02-14T08:40:40.000Z">2020-02-14</time> -->
+                <time class="level-item has-text-grey" datetime="2020-02-14T08:40:40.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-02-14</time>
                 
-                <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-02-01T09:00:00.000Z"><i class="far fa-calendar-check">&nbsp;</i>2020-02-01</time>
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-02-14T08:41:38.392Z"><i class="far fa-calendar-check">&nbsp;</i>2020-02-14</time>
                 
                 
                 <div class="level-item">
@@ -161,7 +161,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    6 分钟 读完 (大约 880 个字)
+                    5 分钟 读完 (大约 696 个字)
                 </span>
                 
                 
@@ -170,62 +170,30 @@
         
         <!-- <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                点云采样
+                点云基于图论的处理方法(一)
              -->
         </h1>
         <div class="content">
-            <p>有关点云采样的方法： 格点采样、均匀采样、几何采样</p>
+            <p>本系列是按照bilibili上刘永成博士的分享课的论文笔记，主要针对点云基于图论的处理方法。<br>这一部分主要讲解的方法包括：DGCNN</p>
 <a id="more"></a>
 <hr>
-<h2 id="格点采样"><a href="#格点采样" class="headerlink" title="格点采样"></a>格点采样</h2><p>格点采样，就是把三维空间用格点离散化，然后在每个格点里采样一个点。具体方法如下：</p>
-<ol>
-<li><p>创建格点：如中间图所示，计算点云的包围盒，然后把包围盒离散成小格子。格子的长宽高可以用户设定，也可以通过设定包围盒三个方向的格点数来求得。</p>
-</li>
-<li><p>每个小格子包含了若干个点，取离格子中心点最近的点为采样点，如右图所示。   </p>
-</li>
-</ol>
-<p><img src="https://i.loli.net/2020/01/27/XTmGbjBedcfJuDp.png" alt="image.png"></p>
-<p>格点采样的特点：</p>
-<p>效率非常高</p>
-<ul>
-<li>采样点分布比较均匀，但是均匀性没有均价采样高</li>
-<li>可以通过格点的尺寸控制点间距</li>
-<li>不能精确控制采样点个数</li>
+<h2 id="DGCNN-TOG-2019"><a href="#DGCNN-TOG-2019" class="headerlink" title="DGCNN (TOG 2019)"></a>DGCNN (TOG 2019)</h2><p>DGCNN: Dynamic Graph CNN for Learning on Point Clouds </p>
+<h3 id="具体思想"><a href="#具体思想" class="headerlink" title="具体思想"></a>具体思想</h3><ul>
+<li>改进pointNet方法。主要是pointNet在特征提取中只考虑各个点的特征，未对相邻点进行考虑。PointNet的主要流程是：先单独计算（更新）每个点的feature，更新多次之后，最后用global pool将所有点的feature整合为一个点云的feature。在更新每个点的feature时，只与这个点之前的feature有关，与其它点的feature无关。作者在论文中认为：每个点的feature在计算（更新）过程中彼此独立，每个都相可以看作是一个全局feature。这可能就是一个值得改进的地方。</li>
+<li>提出动态图的想法，每经过一次edgeConv之后都要重新提取一次动态图，即knn特征提取。使得特征感受野逐步增加。</li>
 </ul>
-<hr>
-<h2 id="均匀采样"><a href="#均匀采样" class="headerlink" title="均匀采样"></a>均匀采样</h2><p>均匀采样的方法有很多，并且有一定的方法来评估采样的均匀性。这里介绍一种简单的均匀采样方法，最远点采样。具体方法如下：</p>
-<p>输入点云记为C，采样点集记为S，S初始化为空集。</p>
-<ol>
-<li><p>随机采样一个种子点Seed，放入S。如图1所示。</p>
-</li>
-<li><p>每次采样一个点，放入S。采样的方法是，在集合C-S里，找一点距离集合S距离最远的点。其中点到集合的距离为，这点到集合里所有点距最小的距离。如图2-6所示，采样点S的数量分别为2，4，10，20，100.<br><img src="https://i.loli.net/2020/01/27/T2WyPYkKUeOmdHF.png" alt="image.png"></p>
-</li>
-</ol>
-<p>最远点采样的特点：</p>
-<p>采样点分布均匀</p>
-<ul>
-<li>算法时间复杂度有些高，因为每次采样一个点，都要计算集合到集合之间的距离。可以采用分治的方法来提高效率。</li>
-<li>采样点一般先分布在边界附近，这个性质在有些地方是有用的，比如图元检测里面的点采样。</li>
+<h3 id="核心部分"><a href="#核心部分" class="headerlink" title="核心部分"></a>核心部分</h3><h4 id="edgeConv"><a href="#edgeConv" class="headerlink" title="edgeConv"></a>edgeConv</h4><ul>
+<li>输入特征维度为$(n,c_1)$， 针对每一个点$x_i$计算它的knn，即k个相邻点(使用top-k即升序得到)。</li>
+<li>计算每个点的edge特征：$x_{j_{i1}}-x_i,…,x_{j_{ik}}-x_i$</li>
+<li>将点的特征和边的特征连接起来。$(x_i, x_{j_{i1}}-x_i),….,(x_i, x_{j_{ik}}-x_i)$</li>
+<li>使用共享参数的全连接层来进行特征提取。代码中可以用1x1的卷积来实现。得到k个特征。</li>
+<li>用max-pool这种对称函数来提取每个点的特征。输出特征维度为$(n,c_2)$。</li>
 </ul>
-<hr>
-<h2 id="几何采样"><a href="#几何采样" class="headerlink" title="几何采样"></a>几何采样</h2><p>几何采样，在点云曲率越大的地方，采样点个数越多。下面介绍一种简单的几何采样方法，具体方法如下：</p>
-<p>输入是一个点云，目标采样数S，采样均匀性U</p>
-<ol>
-<li><p>点云曲率计算比较耗时，这里我们采用了一个简单方法，来近似达到曲率的效果：给每个点计算K邻域，然后计算点到邻域点的法线夹角值。曲率越大的地方，这个夹角值就越大。</p>
-</li>
-<li><p>设置一个角度阈值，比如5度。点的邻域夹角值大于这个阈值的点，被放入几何特征区域G。这样点云就分成了两部分，几何特征区域G和其它区域。</p>
-</li>
-<li><p>均匀采样几何特征区域G和其它区域，采样数分别为S * (1 - U)，S * U。</p>
-</li>
-</ol>
-<p><img src="https://i.loli.net/2020/01/27/Lb51viAFlK4mVC3.png" alt="image.png"></p>
-<p>这个采样方法的特点：</p>
-<ul>
-<li>几何特征越明显的区域，采样点个数分布越多</li>
-<li>计算效率高</li>
-<li>采样点局部分布是均匀的</li>
-<li>稳定性高：通过几何特征区域的划分，使得采样结果抗噪性更强</li>
-</ul>
+<p>这样一来更新权重的时候，每一个点的权重更新不止于这个点的特征有关，还与周边的k个最邻点的特征有关。</p>
+<p><img src="https://raw.githubusercontent.com/harrylin-hyl/FigureBed/master/image/20200214163457.png" alt="20200214163457.png"></p>
+<h4 id="动态图"><a href="#动态图" class="headerlink" title="动态图"></a>动态图</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">x = get_graph_feature(x, k=self.k)</span><br><span class="line">x = self.conv1(x)</span><br><span class="line">x1 = x.max(dim=<span class="number">-1</span>, keepdim=<span class="literal">False</span>)[<span class="number">0</span>]</span><br><span class="line"></span><br><span class="line">x = get_graph_feature(x1, k=self.k)</span><br><span class="line">x = self.conv2(x)</span><br><span class="line">x2 = x.max(dim=<span class="number">-1</span>, keepdim=<span class="literal">False</span>)[<span class="number">0</span>]</span><br><span class="line"></span><br><span class="line">x = get_graph_feature(x2, k=self.k)</span><br><span class="line">x = self.conv3(x)</span><br><span class="line">x3 = x.max(dim=<span class="number">-1</span>, keepdim=<span class="literal">False</span>)[<span class="number">0</span>]</span><br><span class="line"></span><br><span class="line">x = get_graph_feature(x3, k=self.k)</span><br><span class="line">x = self.conv4(x)</span><br><span class="line">x4 = x.max(dim=<span class="number">-1</span>, keepdim=<span class="literal">False</span>)[<span class="number">0</span>]</span><br><span class="line"></span><br><span class="line">x = torch.cat((x1, x2, x3, x4), dim=<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
+
+<p>在每一次edgeConv之前要进行新特征的图提取，提取出新特征每一个点的k个相邻特征。这样图结构就变成动态的，能够自适应不同数据。越深的特征感受野也就越大。如代码所示也将不同感受野的特征进行了连接操作。</p>
 
         </div>
         
@@ -235,11 +203,11 @@
                     </li>
                     <li class="post-copyright-link">
                     <strong>本文链接：</strong>
-                    <a href="" title="{{ page.title }}">点云采样</a>
+                    <a href="" title="{{ page.title }}">点云基于图论的处理方法(一)</a>
                     </li>
                     <li class="post-copyright-link">
                     <strong>发布时间：</strong>
-                    <a href="" title="{{ page.title }}">2020年2月1日 - 15时02分</a>
+                    <a href="" title="{{ page.title }}">2020年2月14日 - 16时02分</a>
                     </li>
                     <li class="post-copyright-license">
                     <strong>版权声明： </strong>
@@ -304,13 +272,13 @@
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
         
-        <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2020/02/02/%E4%B8%BA%E8%87%AA%E5%AE%9A%E4%B9%89%E5%8D%9A%E5%AE%A2%E6%B7%BB%E5%8A%A0%E8%AF%84%E8%AE%BA%E5%8A%9F%E8%83%BD/">
-                <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">为自定义博客添加评论功能</span>
+        
+        <div class="level-end">
+            <a class="level level-item has-link-grey  article-nav-next" href="/2020/02/13/%E7%82%B9%E4%BA%91%E8%A7%84%E5%88%99%E5%8C%96%E5%A4%84%E7%90%86(%E4%BA%8C)/">
+                <span class="level-item">点云规则化处理(二)</span>
+                <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
-        
         
     </div>
 </div>
@@ -328,7 +296,7 @@
     var gitalk = new Gitalk({
         clientID: 'bac59b9114cfee309c54',
         clientSecret: '2cf48e13436b28376f072ac3458ba37cff59f37b',
-        id: 'ccfb4214dcda7b433866c31ba03b539d',
+        id: '30cad1dc26b503a484746bf5c7bb387a',
         repo: 'harrylin-hyl.github.io',
         owner: 'harrylin-hyl',
         admin: "harrylin-hyl",
@@ -454,18 +422,26 @@
                     目录
                 </h3>
                 <ul class="menu-list"><li>
-        <a class="is-flex" href="#格点采样">
+        <a class="is-flex" href="#DGCNN-TOG-2019">
         <span class="has-mr-6">1</span>
-        <span>格点采样</span>
+        <span>DGCNN (TOG 2019)</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#具体思想">
+        <span class="has-mr-6">1.1</span>
+        <span>具体思想</span>
         </a></li><li>
-        <a class="is-flex" href="#均匀采样">
-        <span class="has-mr-6">2</span>
-        <span>均匀采样</span>
+        <a class="is-flex" href="#核心部分">
+        <span class="has-mr-6">1.2</span>
+        <span>核心部分</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#edgeConv">
+        <span class="has-mr-6">1.2.1</span>
+        <span>edgeConv</span>
         </a></li><li>
-        <a class="is-flex" href="#几何采样">
-        <span class="has-mr-6">3</span>
-        <span>几何采样</span>
-        </a></li></ul>
+        <a class="is-flex" href="#动态图">
+        <span class="has-mr-6">1.2.2</span>
+        <span>动态图</span>
+        </a></li></ul></li></ul></li></ul>
             </div>
         </div>
     </div>
@@ -488,7 +464,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/harrylin.ico" alt="点云采样" height="28">
+                    <img src="/images/harrylin.ico" alt="点云基于图论的处理方法(一)" height="28">
                 
                 </a>
                 <p class="is-size-7">
