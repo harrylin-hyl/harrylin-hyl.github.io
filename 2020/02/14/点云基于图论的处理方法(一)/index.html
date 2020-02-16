@@ -10,16 +10,16 @@
 <title>点云基于图论的处理方法(一) - harrylin&#39;s blog</title>
 
 
-    <meta name="description" content="本系列是按照bilibili上刘永成博士的分享课的论文笔记，主要针对点云基于图论的处理方法。这一部分主要讲解的方法包括：DGCNN">
+    <meta name="description" content="本系列是按照bilibili上刘永成博士的分享课的论文笔记，主要针对点云基于图论的处理方法。这一部分主要讲解的方法包括：DGCNN、RGCNN">
 <meta property="og:type" content="article">
 <meta property="og:title" content="点云基于图论的处理方法(一)">
 <meta property="og:url" content="http://yoursite.com/2020/02/14/%E7%82%B9%E4%BA%91%E5%9F%BA%E4%BA%8E%E5%9B%BE%E8%AE%BA%E7%9A%84%E5%A4%84%E7%90%86%E6%96%B9%E6%B3%95(%E4%B8%80)/index.html">
 <meta property="og:site_name" content="harrylin&#39;s blog">
-<meta property="og:description" content="本系列是按照bilibili上刘永成博士的分享课的论文笔记，主要针对点云基于图论的处理方法。这一部分主要讲解的方法包括：DGCNN">
+<meta property="og:description" content="本系列是按照bilibili上刘永成博士的分享课的论文笔记，主要针对点云基于图论的处理方法。这一部分主要讲解的方法包括：DGCNN、RGCNN">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://raw.githubusercontent.com/harrylin-hyl/FigureBed/master/image/20200204164422.png">
 <meta property="article:published_time" content="2020-02-14T08:40:40.000Z">
-<meta property="article:modified_time" content="2020-02-14T08:45:11.900Z">
+<meta property="article:modified_time" content="2020-02-16T15:06:26.293Z">
 <meta property="article:author" content="harrylin">
 <meta property="article:tag" content="点云">
 <meta name="twitter:card" content="summary">
@@ -150,7 +150,7 @@
                 <!-- <time class="level-item has-text-grey" datetime="2020-02-14T08:40:40.000Z">2020-02-14</time> -->
                 <time class="level-item has-text-grey" datetime="2020-02-14T08:40:40.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-02-14</time>
                 
-                <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-02-14T08:45:11.900Z"><i class="far fa-calendar-check">&nbsp;</i>2020-02-14</time>
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-02-16T15:06:26.293Z"><i class="far fa-calendar-check">&nbsp;</i>2020-02-16</time>
                 
                 
                 <div class="level-item">
@@ -161,7 +161,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    5 分钟 读完 (大约 696 个字)
+                    10 分钟 读完 (大约 1469 个字)
                 </span>
                 
                 
@@ -174,7 +174,7 @@
              -->
         </h1>
         <div class="content">
-            <p>本系列是按照bilibili上刘永成博士的分享课的论文笔记，主要针对点云基于图论的处理方法。<br>这一部分主要讲解的方法包括：DGCNN</p>
+            <p>本系列是按照bilibili上刘永成博士的分享课的论文笔记，主要针对点云基于图论的处理方法。<br>这一部分主要讲解的方法包括：DGCNN、RGCNN</p>
 <a id="more"></a>
 <hr>
 <h2 id="DGCNN-TOG-2019"><a href="#DGCNN-TOG-2019" class="headerlink" title="DGCNN (TOG 2019)"></a>DGCNN (TOG 2019)</h2><p>DGCNN: Dynamic Graph CNN for Learning on Point Clouds </p>
@@ -194,6 +194,28 @@
 <h4 id="动态图"><a href="#动态图" class="headerlink" title="动态图"></a>动态图</h4><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">x = get_graph_feature(x, k=self.k)</span><br><span class="line">x = self.conv1(x)</span><br><span class="line">x1 = x.max(dim=<span class="number">-1</span>, keepdim=<span class="literal">False</span>)[<span class="number">0</span>]</span><br><span class="line"></span><br><span class="line">x = get_graph_feature(x1, k=self.k)</span><br><span class="line">x = self.conv2(x)</span><br><span class="line">x2 = x.max(dim=<span class="number">-1</span>, keepdim=<span class="literal">False</span>)[<span class="number">0</span>]</span><br><span class="line"></span><br><span class="line">x = get_graph_feature(x2, k=self.k)</span><br><span class="line">x = self.conv3(x)</span><br><span class="line">x3 = x.max(dim=<span class="number">-1</span>, keepdim=<span class="literal">False</span>)[<span class="number">0</span>]</span><br><span class="line"></span><br><span class="line">x = get_graph_feature(x3, k=self.k)</span><br><span class="line">x = self.conv4(x)</span><br><span class="line">x4 = x.max(dim=<span class="number">-1</span>, keepdim=<span class="literal">False</span>)[<span class="number">0</span>]</span><br><span class="line"></span><br><span class="line">x = torch.cat((x1, x2, x3, x4), dim=<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
 
 <p>在每一次edgeConv之前要进行新特征的图提取，提取出新特征每一个点的k个相邻特征。这样图结构就变成动态的，能够自适应不同数据。越深的特征感受野也就越大。如代码所示也将不同感受野的特征进行了连接操作。</p>
+<h2 id="Regularized-GCNN-MM-2018"><a href="#Regularized-GCNN-MM-2018" class="headerlink" title="Regularized GCNN. MM 2018"></a>Regularized GCNN. MM 2018</h2><p>RGCNN: Regularized Graph CNN for Point Cloud Segmentation</p>
+<h3 id="具体思想-1"><a href="#具体思想-1" class="headerlink" title="具体思想"></a>具体思想</h3><ul>
+<li>用图论的思想处理点云数据，论文中graph中说的是全连接图，即点云中所有点是互通的。然后用正则化的图卷积来进行特征提取。</li>
+<li>用切比雪夫多项式拟合$L^k$降低计算复杂度。<br>结构图如下所示：<br><img src="https://raw.githubusercontent.com/harrylin-hyl/FigureBed/master/image/20200216222435.png" alt="20200216222435.png"></li>
+</ul>
+<p>这篇文章只讲关键部分，具体推导请看我的另外一篇GCN的博客。</p>
+<h3 id="核心部分-1"><a href="#核心部分-1" class="headerlink" title="核心部分"></a>核心部分</h3><h4 id="邻接矩阵A、度矩阵D、拉普拉斯矩阵L"><a href="#邻接矩阵A、度矩阵D、拉普拉斯矩阵L" class="headerlink" title="邻接矩阵A、度矩阵D、拉普拉斯矩阵L"></a>邻接矩阵A、度矩阵D、拉普拉斯矩阵L</h4><ul>
+<li>A: 定义的图结构为全连接图，计算点云的A矩阵的公式为：<br>$a_{i, j}=\exp \left(-\beta\left|\mathbf{p}<em>{i}-\mathbf{p}</em>{j}\right|_{2}^{2}\right)$，$\beta$为1</li>
+<li>D: 因为图结构是全连接，所以度矩阵D为对角线为点云总点数的对角阵。</li>
+<li>L: 正常L = D - A，归一化的L为: $\boldsymbol{L}=\boldsymbol{D}^{-1 / 2}(\boldsymbol{D}-\boldsymbol{W}) \boldsymbol{D}^{-1 / 2}=\boldsymbol{I}_{n}-\boldsymbol{D}^{-1 / 2} \boldsymbol{W D}^{-1 / 2}$</li>
+</ul>
+<h4 id="图卷积"><a href="#图卷积" class="headerlink" title="图卷积"></a>图卷积</h4><ul>
+<li>因为点云所在的空间不像图像类似的欧式空间，我们可以建立点云之间的拓扑图，在这个拓扑图上进行特征提取。所以这也是另外一个处理点云数据的方法。</li>
+<li>将空域的数据转换为频域上面，用傅里叶变化进行变换计算之后再通过傅里叶逆变换转换回来。$\mathbf{x} *_{\mathcal{G}} \mathbf{y}=\mathbf{U}\left(\mathbf{U}^{T} \mathbf{x}\right) \odot\left(\mathbf{U}^{T} \mathbf{y}\right)$，其中$U^Tx$为傅里叶变换，$Ux$为逆变换，相乘方式为逐点乘。</li>
+<li>通过滤波提取有用特征:<br><img src="https://raw.githubusercontent.com/harrylin-hyl/FigureBed/master/image/20200216225142.png" alt="20200216225142.png"></li>
+</ul>
+<p><img src="https://raw.githubusercontent.com/harrylin-hyl/FigureBed/master/image/20200216230143.png" alt="20200216230143.png"></p>
+<h4 id="切比雪夫多项式"><a href="#切比雪夫多项式" class="headerlink" title="切比雪夫多项式"></a>切比雪夫多项式</h4><p>使用切比雪夫截断法来拟合$L^k$降低计算复杂度。<br><img src="https://raw.githubusercontent.com/harrylin-hyl/FigureBed/master/image/20200216225627.png" alt="20200216225627.png"></p>
+<p>结合代码:</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">chebyshev5</span><span class="params">(self, x, L, Fout, K)</span>:</span></span><br><span class="line">        <span class="comment"># If K == 1 it is equivalent to fc layer</span></span><br><span class="line">        N, M, Fin = x.get_shape()</span><br><span class="line">        N, M, Fin = int(N), int(M), int(Fin)</span><br><span class="line">        x0 = x  <span class="comment"># N x M x Fin</span></span><br><span class="line">        x = tf.expand_dims(x0, <span class="number">0</span>)</span><br><span class="line"></span><br><span class="line">        <span class="function"><span class="keyword">def</span> <span class="title">concat</span><span class="params">(x, x_)</span>:</span></span><br><span class="line">            x_ = tf.expand_dims(x_, <span class="number">0</span>)  <span class="comment"># 1 x M x Fin*N</span></span><br><span class="line">            <span class="keyword">return</span> tf.concat([x, x_], axis=<span class="number">0</span>)  <span class="comment"># K x M x Fin*N</span></span><br><span class="line"></span><br><span class="line">        <span class="keyword">if</span> K &gt; <span class="number">1</span>:</span><br><span class="line">            x1 = tf.matmul(L, x0)</span><br><span class="line">            x = concat(x, x1)</span><br><span class="line">        <span class="keyword">for</span> k <span class="keyword">in</span> range(<span class="number">2</span>, K):</span><br><span class="line">            x2 = <span class="number">2</span> * tf.matmul(L, x1) - x0</span><br><span class="line">            x = concat(x, x2)</span><br><span class="line">            x0, x1 = x1, x2</span><br><span class="line">        <span class="comment"># K x N x M x Fin</span></span><br><span class="line">        x = tf.transpose(x, perm=[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">0</span>])  <span class="comment"># N x M x Fin x K</span></span><br><span class="line">        x = tf.reshape(x, [N * M, Fin * K])  <span class="comment"># N*M x Fin*K</span></span><br><span class="line">        <span class="comment"># Filter: Fin*Fout filters of order K, i.e. one filterbank per feature pair.</span></span><br><span class="line">        W = self._weight_variable([Fin * K, Fout], regularization=<span class="literal">False</span>)</span><br><span class="line">        x = tf.matmul(x, W)  <span class="comment"># N*M x Fout</span></span><br><span class="line">        <span class="keyword">return</span> tf.reshape(x, [N, M, Fout])  <span class="comment"># N x M x Fout</span></span><br></pre></td></tr></table></figure>
+<p>和上图是一致的，W就代表着切比雪夫多项式的系数，用这个多项式去拟合高阶方程，有点类似PCA降维。</p>
+<p>k值代表k-hop，最多能传递几步。这就和感受野比较类似。但是相对应的k越大计算复杂度越大。</p>
 
         </div>
         
@@ -271,6 +293,13 @@
 
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2020/02/14/%E5%9B%BE%E5%8D%B7%E7%A7%AF/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">点云基于图论的处理方法(一)</span>
+            </a>
+        </div>
         
         
         <div class="level-end">
@@ -353,7 +382,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            8
+                            9
                         </p>
                     </a>
                 </div>
@@ -365,7 +394,7 @@
                     </p>
                     <a href="/categories">
                         <p class="title has-text-weight-normal">
-                            3
+                            4
                         </p>
                     </a>
                 </div>
@@ -377,7 +406,7 @@
                     </p>
                     <a href="/tags">
                         <p class="title has-text-weight-normal">
-                            5
+                            6
                         </p>
                     </a>
                 </div>
@@ -441,6 +470,30 @@
         <a class="is-flex" href="#动态图">
         <span class="has-mr-6">1.2.2</span>
         <span>动态图</span>
+        </a></li></ul></li></ul></li><li>
+        <a class="is-flex" href="#Regularized-GCNN-MM-2018">
+        <span class="has-mr-6">2</span>
+        <span>Regularized GCNN. MM 2018</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#具体思想-1">
+        <span class="has-mr-6">2.1</span>
+        <span>具体思想</span>
+        </a></li><li>
+        <a class="is-flex" href="#核心部分-1">
+        <span class="has-mr-6">2.2</span>
+        <span>核心部分</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#邻接矩阵A、度矩阵D、拉普拉斯矩阵L">
+        <span class="has-mr-6">2.2.1</span>
+        <span>邻接矩阵A、度矩阵D、拉普拉斯矩阵L</span>
+        </a></li><li>
+        <a class="is-flex" href="#图卷积">
+        <span class="has-mr-6">2.2.2</span>
+        <span>图卷积</span>
+        </a></li><li>
+        <a class="is-flex" href="#切比雪夫多项式">
+        <span class="has-mr-6">2.2.3</span>
+        <span>切比雪夫多项式</span>
         </a></li></ul></li></ul></li></ul>
             </div>
         </div>
