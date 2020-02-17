@@ -19,7 +19,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://raw.githubusercontent.com/harrylin-hyl/FigureBed/master/image/20200204164422.png">
 <meta property="article:published_time" content="2020-02-14T08:40:40.000Z">
-<meta property="article:modified_time" content="2020-02-16T15:06:26.293Z">
+<meta property="article:modified_time" content="2020-02-17T07:21:57.382Z">
 <meta property="article:author" content="harrylin">
 <meta property="article:tag" content="点云">
 <meta name="twitter:card" content="summary">
@@ -150,7 +150,7 @@
                 <!-- <time class="level-item has-text-grey" datetime="2020-02-14T08:40:40.000Z">2020-02-14</time> -->
                 <time class="level-item has-text-grey" datetime="2020-02-14T08:40:40.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-02-14</time>
                 
-                <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-02-16T15:06:26.293Z"><i class="far fa-calendar-check">&nbsp;</i>2020-02-16</time>
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-02-17T07:21:57.382Z"><i class="far fa-calendar-check">&nbsp;</i>2020-02-17</time>
                 
                 
                 <div class="level-item">
@@ -161,7 +161,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    10 分钟 读完 (大约 1469 个字)
+                    10 分钟 读完 (大约 1470 个字)
                 </span>
                 
                 
@@ -201,7 +201,7 @@
 </ul>
 <p>这篇文章只讲关键部分，具体推导请看我的另外一篇GCN的博客。</p>
 <h3 id="核心部分-1"><a href="#核心部分-1" class="headerlink" title="核心部分"></a>核心部分</h3><h4 id="邻接矩阵A、度矩阵D、拉普拉斯矩阵L"><a href="#邻接矩阵A、度矩阵D、拉普拉斯矩阵L" class="headerlink" title="邻接矩阵A、度矩阵D、拉普拉斯矩阵L"></a>邻接矩阵A、度矩阵D、拉普拉斯矩阵L</h4><ul>
-<li>A: 定义的图结构为全连接图，计算点云的A矩阵的公式为：<br>$a_{i, j}=\exp \left(-\beta\left|\mathbf{p}<em>{i}-\mathbf{p}</em>{j}\right|_{2}^{2}\right)$，$\beta$为1</li>
+<li>A: 定义的图结构为全连接图，计算点云的A矩阵的公式为：<br>$a_{i, j}=\exp \left(-\beta\left|\mathbf{p}<em>{i}-\mathbf{p}</em>{j}\right|_{2}^{2}\right)，\beta$为1。</li>
 <li>D: 因为图结构是全连接，所以度矩阵D为对角线为点云总点数的对角阵。</li>
 <li>L: 正常L = D - A，归一化的L为: $\boldsymbol{L}=\boldsymbol{D}^{-1 / 2}(\boldsymbol{D}-\boldsymbol{W}) \boldsymbol{D}^{-1 / 2}=\boldsymbol{I}_{n}-\boldsymbol{D}^{-1 / 2} \boldsymbol{W D}^{-1 / 2}$</li>
 </ul>
