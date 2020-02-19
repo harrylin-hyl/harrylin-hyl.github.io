@@ -7,19 +7,19 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>点云基于图论的处理方法(一) - harrylin&#39;s blog</title>
+<title>点云基于图论的处理方法 - harrylin&#39;s blog</title>
 
 
-    <meta name="description" content="本系列是按照bilibili上刘永成博士的分享课的论文笔记，主要针对点云基于图论的处理方法。这一部分主要讲解的方法包括：DGCNN、RGCNN、Spectral Graph Convolution">
+    <meta name="description" content="本系列是按照bilibili上刘永成博士的分享课的论文笔记，主要针对点云基于图论的处理方法。这一部分主要讲解的方法包括：DGCNN、RGCNN、Spectral Graph Convolution、DeepGCNs">
 <meta property="og:type" content="article">
-<meta property="og:title" content="点云基于图论的处理方法(一)">
-<meta property="og:url" content="http://yoursite.com/2020/02/14/%E7%82%B9%E4%BA%91%E5%9F%BA%E4%BA%8E%E5%9B%BE%E8%AE%BA%E7%9A%84%E5%A4%84%E7%90%86%E6%96%B9%E6%B3%95(%E4%B8%80)/index.html">
+<meta property="og:title" content="点云基于图论的处理方法">
+<meta property="og:url" content="http://yoursite.com/2020/02/14/%E7%82%B9%E4%BA%91%E5%9F%BA%E4%BA%8E%E5%9B%BE%E8%AE%BA%E7%9A%84%E5%A4%84%E7%90%86%E6%96%B9%E6%B3%95/index.html">
 <meta property="og:site_name" content="harrylin&#39;s blog">
-<meta property="og:description" content="本系列是按照bilibili上刘永成博士的分享课的论文笔记，主要针对点云基于图论的处理方法。这一部分主要讲解的方法包括：DGCNN、RGCNN、Spectral Graph Convolution">
+<meta property="og:description" content="本系列是按照bilibili上刘永成博士的分享课的论文笔记，主要针对点云基于图论的处理方法。这一部分主要讲解的方法包括：DGCNN、RGCNN、Spectral Graph Convolution、DeepGCNs">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://raw.githubusercontent.com/harrylin-hyl/FigureBed/master/image/20200204164422.png">
 <meta property="article:published_time" content="2020-02-14T08:40:40.000Z">
-<meta property="article:modified_time" content="2020-02-18T07:31:04.407Z">
+<meta property="article:modified_time" content="2020-02-19T11:40:32.435Z">
 <meta property="article:author" content="harrylin">
 <meta property="article:tag" content="点云">
 <meta name="twitter:card" content="summary">
@@ -82,7 +82,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/harrylin.ico" alt="点云基于图论的处理方法(一)" height="28">
+                <img src="/images/harrylin.ico" alt="点云基于图论的处理方法" height="28">
             
             </a>
         </div>
@@ -141,7 +141,7 @@
     <div class="card-content article ">
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
                         
-                            <i class="fas fa-angle-double-right"></i>点云基于图论的处理方法(一)
+                            <i class="fas fa-angle-double-right"></i>点云基于图论的处理方法
                         
                     </h1>
         
@@ -150,7 +150,7 @@
                 <!-- <time class="level-item has-text-grey" datetime="2020-02-14T08:40:40.000Z">2020-02-14</time> -->
                 <time class="level-item has-text-grey" datetime="2020-02-14T08:40:40.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-02-14</time>
                 
-                <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-02-18T07:31:04.407Z"><i class="far fa-calendar-check">&nbsp;</i>2020-02-18</time>
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-02-19T11:40:32.435Z"><i class="far fa-calendar-check">&nbsp;</i>2020-02-19</time>
                 
                 
                 <div class="level-item">
@@ -161,7 +161,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    12 分钟 读完 (大约 1857 个字)
+                    14 分钟 读完 (大约 2158 个字)
                 </span>
                 
                 
@@ -170,11 +170,11 @@
         
         <!-- <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                点云基于图论的处理方法(一)
+                点云基于图论的处理方法
              -->
         </h1>
         <div class="content">
-            <p>本系列是按照bilibili上刘永成博士的分享课的论文笔记，主要针对点云基于图论的处理方法。<br>这一部分主要讲解的方法包括：DGCNN、RGCNN、Spectral Graph Convolution</p>
+            <p>本系列是按照bilibili上刘永成博士的分享课的论文笔记，主要针对点云基于图论的处理方法。<br>这一部分主要讲解的方法包括：DGCNN、RGCNN、Spectral Graph Convolution、DeepGCNs</p>
 <a id="more"></a>
 <hr>
 <h2 id="DGCNN-TOG-2019"><a href="#DGCNN-TOG-2019" class="headerlink" title="DGCNN (TOG 2019)"></a>DGCNN (TOG 2019)</h2><p>DGCNN: Dynamic Graph CNN for Learning on Point Clouds </p>
@@ -229,6 +229,12 @@
 <p>左边是pointNet++系列的方法，右边是图谱卷积的方法。<br>对局部点云建立图结构，用傅里叶变换和谱滤波再用傅里叶逆变换，返回空域。也是用图谱卷积提取局部点云特征的一贯方法。和上一种RGCNN不同是在局部区域中提取。</p>
 <h4 id="Recursive-Cluster"><a href="#Recursive-Cluster" class="headerlink" title="Recursive Cluster"></a>Recursive Cluster</h4><p><img src="https://raw.githubusercontent.com/harrylin-hyl/FigureBed/master/image/20200218152754.png" alt="20200218152754.png"></p>
 <p>既然之前已经计算过拉普拉斯矩阵，那么当然就可以用这个来进行谱聚类。用递进的方式，逐步减少聚类中心，即cluster。结合池化操作，提取出当前区域的中心特征。</p>
+<h2 id="DeepGCNs-ICCV-2019"><a href="#DeepGCNs-ICCV-2019" class="headerlink" title="DeepGCNs (ICCV 2019)"></a>DeepGCNs (ICCV 2019)</h2><p>DeepGCNs: Can GCNs Go as Deep as CNNs?</p>
+<h3 id="具体思想-3"><a href="#具体思想-3" class="headerlink" title="具体思想"></a>具体思想</h3><p>将GCN做得跟CNN一样可以有较深的层数。GCNN因为需要聚合相邻信息，所以说有一定的平滑，导致层数不能太深。所以说作者将三个在CNN中用得比较多的方法(resnet连接方式、densenet连接方式、膨胀卷积)，用在了动态图卷积中。使得梯度不会消失，信息得以保留。</p>
+<h3 id="核心部分-3"><a href="#核心部分-3" class="headerlink" title="核心部分"></a>核心部分</h3><h4 id="连接方式"><a href="#连接方式" class="headerlink" title="连接方式"></a>连接方式</h4><p><img src="https://raw.githubusercontent.com/harrylin-hyl/FigureBed/master/image/20200219193514.png" alt="20200219193514.png"></p>
+<p>如图所示，每一层GCN都会分别提取动态图的信息，resGCN进行加和；denseGCN进行拼接。在尽可能保留信息的同时，使得层数变深，增强感受野。</p>
+<h4 id="图膨胀卷积"><a href="#图膨胀卷积" class="headerlink" title="图膨胀卷积"></a>图膨胀卷积</h4><p><img src="https://raw.githubusercontent.com/harrylin-hyl/FigureBed/master/image/20200219193751.png" alt="20200219193751.png"></p>
+<p>如图所示，通过knn的方式，先确定卷积区域，也即当前感受野区域。设置不同的dilation值，在不增加计算复杂度的前提下，增强感受野。和CNN中的膨胀卷积类似的效果，只是应用到图中来。</p>
 
         </div>
         
@@ -238,7 +244,7 @@
                     </li>
                     <li class="post-copyright-link">
                     <strong>本文链接：</strong>
-                    <a href="" title="{{ page.title }}">点云基于图论的处理方法(一)</a>
+                    <a href="" title="{{ page.title }}">点云基于图论的处理方法</a>
                     </li>
                     <li class="post-copyright-link">
                     <strong>发布时间：</strong>
@@ -331,7 +337,7 @@
     var gitalk = new Gitalk({
         clientID: 'bac59b9114cfee309c54',
         clientSecret: '2cf48e13436b28376f072ac3458ba37cff59f37b',
-        id: '30cad1dc26b503a484746bf5c7bb387a',
+        id: 'f3fd018618313b94b032abedba10af6e',
         repo: 'harrylin-hyl.github.io',
         owner: 'harrylin-hyl',
         admin: "harrylin-hyl",
@@ -520,6 +526,26 @@
         <a class="is-flex" href="#Recursive-Cluster">
         <span class="has-mr-6">3.2.2</span>
         <span>Recursive Cluster</span>
+        </a></li></ul></li></ul></li><li>
+        <a class="is-flex" href="#DeepGCNs-ICCV-2019">
+        <span class="has-mr-6">4</span>
+        <span>DeepGCNs (ICCV 2019)</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#具体思想-3">
+        <span class="has-mr-6">4.1</span>
+        <span>具体思想</span>
+        </a></li><li>
+        <a class="is-flex" href="#核心部分-3">
+        <span class="has-mr-6">4.2</span>
+        <span>核心部分</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#连接方式">
+        <span class="has-mr-6">4.2.1</span>
+        <span>连接方式</span>
+        </a></li><li>
+        <a class="is-flex" href="#图膨胀卷积">
+        <span class="has-mr-6">4.2.2</span>
+        <span>图膨胀卷积</span>
         </a></li></ul></li></ul></li></ul>
             </div>
         </div>
@@ -543,7 +569,7 @@
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/harrylin.ico" alt="点云基于图论的处理方法(一)" height="28">
+                    <img src="/images/harrylin.ico" alt="点云基于图论的处理方法" height="28">
                 
                 </a>
                 <p class="is-size-7">
