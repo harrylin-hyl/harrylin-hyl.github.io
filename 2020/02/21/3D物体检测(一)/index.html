@@ -7,25 +7,23 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
 
-<title>Github+Hexo+icarus创建自定义blog - harrylin&#39;s blog</title>
+<title>3D物体检测(一) - harrylin&#39;s blog</title>
 
 
-    <meta name="description" content="使用Github+Hexo+icarus创建自定义blog">
+    <meta name="description" content="总结一下在bilibili上看到的基于点云场景的三维物体检测算法及应用,有兴趣的也可以去看看这个视频。这一部分主要总结一下，结合雷达点云数据和相机采集的二维图像数据的方法。主要包括: MV3D-Net、F-PointNet、MMF">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Github+Hexo+icarus创建自定义blog">
-<meta property="og:url" content="http://yoursite.com/2020/02/02/github+hexo+icarus%E5%88%9B%E5%BB%BA%E8%87%AA%E5%AE%9A%E4%B9%89blog/index.html">
+<meta property="og:title" content="3D物体检测(一)">
+<meta property="og:url" content="http://yoursite.com/2020/02/21/3D%E7%89%A9%E4%BD%93%E6%A3%80%E6%B5%8B(%E4%B8%80)/index.html">
 <meta property="og:site_name" content="harrylin&#39;s blog">
-<meta property="og:description" content="使用Github+Hexo+icarus创建自定义blog">
+<meta property="og:description" content="总结一下在bilibili上看到的基于点云场景的三维物体检测算法及应用,有兴趣的也可以去看看这个视频。这一部分主要总结一下，结合雷达点云数据和相机采集的二维图像数据的方法。主要包括: MV3D-Net、F-PointNet、MMF">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://raw.githubusercontent.com/harrylin-hyl/FigureBed/master/image/20200204170942.png">
-<meta property="article:published_time" content="2020-02-02T07:33:40.000Z">
-<meta property="article:modified_time" content="2020-02-05T09:10:47.104Z">
+<meta property="og:image" content="https://raw.githubusercontent.com/harrylin-hyl/FigureBed/master/image/20200204164422.png">
+<meta property="article:published_time" content="2020-02-21T08:40:40.000Z">
+<meta property="article:modified_time" content="2020-02-20T16:36:12.294Z">
 <meta property="article:author" content="harrylin">
-<meta property="article:tag" content="hexo">
-<meta property="article:tag" content="github">
-<meta property="article:tag" content="icarus">
+<meta property="article:tag" content="点云、3D物体检测">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://raw.githubusercontent.com/harrylin-hyl/FigureBed/master/image/20200204170942.png">
+<meta name="twitter:image" content="https://raw.githubusercontent.com/harrylin-hyl/FigureBed/master/image/20200204164422.png">
 
 
 
@@ -84,7 +82,7 @@
         <div class="navbar-brand is-flex-center">
             <a class="navbar-item navbar-logo" href="/">
             
-                <img src="/images/harrylin.ico" alt="Github+Hexo+icarus创建自定义blog" height="28">
+                <img src="/images/harrylin.ico" alt="3D物体检测(一)" height="28">
             
             </a>
         </div>
@@ -143,27 +141,25 @@
     <div class="card-content article ">
         <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
                         
-                            <i class="fas fa-angle-double-right"></i>Github+Hexo+icarus创建自定义blog
+                            <i class="fas fa-angle-double-right"></i>3D物体检测(一)
                         
                     </h1>
         
         <div class="level article-meta is-size-7 is-uppercase is-mobile is-overflow-x-auto">
             <div class="level-left">
-                <!-- <time class="level-item has-text-grey" datetime="2020-02-02T07:33:40.000Z">2020-02-02</time> -->
-                <time class="level-item has-text-grey" datetime="2020-02-02T07:33:40.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-02-02</time>
-                
-                <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-02-05T09:10:47.104Z"><i class="far fa-calendar-check">&nbsp;</i>2020-02-05</time>
+                <!-- <time class="level-item has-text-grey" datetime="2020-02-21T08:40:40.000Z">2020-02-21</time> -->
+                <time class="level-item has-text-grey" datetime="2020-02-21T08:40:40.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-02-21</time>
                 
                 
                 <div class="level-item">
-                <a class="has-link-grey -link" href="/categories/%E8%87%AA%E5%AE%9A%E4%B9%89%E5%8D%9A%E5%AE%A2/">自定义博客</a>
+                <a class="has-link-grey -link" href="/categories/3D%E7%89%A9%E4%BD%93%E6%A3%80%E6%B5%8B/">3D物体检测</a>
                 </div>
                 
                 
                 <span class="level-item has-text-grey">
                     
                     
-                    4 分钟 读完 (大约 565 个字)
+                    6 分钟 读完 (大约 852 个字)
                 </span>
                 
                 
@@ -172,43 +168,35 @@
         
         <!-- <h1 class="title is-size-3 is-size-4-mobile has-text-weight-normal">
             
-                Github+Hexo+icarus创建自定义blog
+                3D物体检测(一)
              -->
         </h1>
         <div class="content">
-            <p>使用Github+Hexo+icarus创建自定义blog</p>
+            <p>总结一下在bilibili上看到的<a href="https://www.bilibili.com/video/av89811975">基于点云场景的三维物体检测算法及应用</a>,有兴趣的也可以去看看这个视频。<br>这一部分主要总结一下，结合雷达点云数据和相机采集的二维图像数据的方法。<br>主要包括: MV3D-Net、F-PointNet、MMF</p>
 <a id="more"></a>
-
-
-<h2 id="在GitHub上申请个人主页"><a href="#在GitHub上申请个人主页" class="headerlink" title="在GitHub上申请个人主页"></a>在GitHub上申请个人主页</h2><ul>
-<li>详情参考：<a href="https://blog.csdn.net/qiangzaizaiO/article/details/52927410">如何在GitHub上面建立自己的个人主页</a><br>简要介绍Hexo的安装与主题的切换。详细的安装方式与配置请参考<a href="https://hexo.io/zh-cn/docs/">官方文档</a></li>
-</ul>
-<h2 id="安装Hexo"><a href="#安装Hexo" class="headerlink" title="安装Hexo"></a>安装Hexo</h2><ul>
-<li>需要环境：<br>  Node.js &gt;= 8.x<br>  Git</li>
-<li>了解Hexo：<br>  <strong>搭建一个属于自己的个人网站!</strong><br><a href="https://zhuanlan.zhihu.com/p/26625249">GitHub+Hexo搭建个人网站</a></li>
-</ul>
-<h3 id="安装Hexo-1"><a href="#安装Hexo-1" class="headerlink" title="安装Hexo"></a>安装Hexo</h3><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-cli -g</span><br><span class="line">hexo init blog</span><br><span class="line">cd blog</span><br><span class="line">npm install</span><br><span class="line">hexo server</span><br></pre></td></tr></table></figure>
-
-<h3 id="配置主题"><a href="#配置主题" class="headerlink" title="配置主题"></a>配置主题</h3><pre><code>cd blog
-# 使用git将主题下载到themes目录
-git clone https://github.com/ppoffice/hexo-theme-icarus.git themes/icarus</code></pre><p>Hexo可以有很多主题，可以在官网中看到很多漂亮的主题，可以根据自己的爱好进行选择，这里我选择了<a href="https://github.com/ppoffice/hexo-theme-icarus.git">icarus主题</a>，个人感觉简单大方。</p>
-<h3 id="FAQ"><a href="#FAQ" class="headerlink" title="FAQ"></a>FAQ</h3><ul>
-<li><p>重新执行hexo serve命令，发现报错如下：</p>
-<p>ERROR Package cheerio is not installed.<br>ERROR Please install the missing dependencies from the root directory of your Hexo site.</p>
-</li>
-</ul>
-<p>原因缺少cheerio依赖，进入blog-hexo目录，执行npm i cheerio -S命令进行安装即可，-S指安装并将其保存到当前项目的配置中，下次就会统一安装了。</p>
-<ul>
-<li><p>重新执行hexo serve命令，发现如下信息：</p>
-<p>INFO  Checking dependencies<br>INFO  Validating the configuration file<br>WARN  themes/icarus/_config.yml is not found. We are creating one for you…<br>INFO  themes/icarus/_config.yml is created. Please restart Hexo to apply changes.</p>
-</li>
-</ul>
-<p>只是提示缺少themes/icarus/_config.yml文件，已经帮助我们生成，再次运行即可正常启动。</p>
-<h2 id="个性化设置"><a href="#个性化设置" class="headerlink" title="个性化设置"></a>个性化设置</h2><p>所谓的个性化设置就是根据个人需要添加不同的插件及功能。基本信息是在主题中的_config.yml进行修改，其他外观布局等分别有各自的文件夹和文件管理。<br>网上有很多的个性设置教程，下面就添加一些优秀的链接：</p>
-<ul>
-<li><a href="https://angericky.github.io/2018/12/24/icarus%E4%B8%AA%E6%80%A7%E5%AE%9A%E5%88%B6/">hexo及icarus主题个性定制</a></li>
-<li><a href="https://www.ccyh.xyz/2019/04/29/Hexo+icarus%E4%B8%BB%E9%A2%98%E9%85%8D%E7%BD%AE/">Hexo+icarus主题配置</a></li>
-</ul>
+<hr>
+<h2 id="MV3D-Net"><a href="#MV3D-Net" class="headerlink" title="MV3D-Net"></a>MV3D-Net</h2><p>Multi-View 3D Object Detection Network for Autonomous Driving</p>
+<h3 id="具体思想"><a href="#具体思想" class="headerlink" title="具体思想"></a>具体思想</h3><p>结合二维图像和3D点云数据。3D点云数据比较庞大，挑选了俯视图和前视图，根据高度、强度和密度三个指标来定义特征。在俯视图中生成3D推荐框，分别在三个不同视图中进行特征提取，再进行特征融合，最后进行定位和回归。</p>
+<h3 id="核心部分"><a href="#核心部分" class="headerlink" title="核心部分"></a>核心部分</h3><p>参考知乎上的一篇博客:<a href="https://zhuanlan.zhihu.com/p/86312623">https://zhuanlan.zhihu.com/p/86312623</a><br>讲得比较详细，有兴趣可以看看。</p>
+<h4 id="网络结构"><a href="#网络结构" class="headerlink" title="网络结构"></a>网络结构</h4><p><img src="https://raw.githubusercontent.com/harrylin-hyl/FigureBed/master/image/20200221001713.png" alt="20200221001713.png"></p>
+<p>本文方法设计的具体步骤如下：</p>
+<p>1）提取特征</p>
+<p>a. 提取点云俯视图特征<br>b. 提取点云前视图特征<br>c. 提取图像特征</p>
+<p>2）从点云俯视图特征中计算候选区域</p>
+<p>3）把候选区域分别与1）中a、b、c得到的特征进行整合<br>a. 把俯视图候选区域投影到前视图和图像中<br>b. 经过ROI pooling整合成同一维度</p>
+<p>4）把整合后的数据经过网络进行融合</p>
+<p>通过俯视图生成3D推荐框，针对俯视点云、前视点云、二维图像三个视图的数据，将推荐框按规则投影，通过roipool分别提取特征，再在后面进行多视图特征融合，回归最终结果。</p>
+<h4 id="提取特征"><a href="#提取特征" class="headerlink" title="提取特征"></a>提取特征</h4><p>1）提取俯视图特征</p>
+<p>俯视图由高度、强度、密度组成，投影到分辨率为0.1的二维网格中。</p>
+<p>a. 高度</p>
+<p>对于每个网格来说，高度特征有点云单元格中的最高值得出；为了编码更多的高度特征，点云被分为M块，每一个块都计算相应的高度图，从而获得了M个高度图。</p>
+<p>b. 强度</p>
+<p>强度是每个单元格中有最大高度的点的映射值.</p>
+<p>c. 密度</p>
+<p>表示每个单元格中点的数目，为了归一化特征，被计算为：</p>
+<p><img src="https://raw.githubusercontent.com/harrylin-hyl/FigureBed/master/image/20200221002758.png" alt="20200221002758.png"></p>
+<p>其中N为单元格中的点的数目。强度和密度特征计算的是整个点云，而高度特征是计算M切片，所以，总的俯视图被编码为（M + 2）个通道的特征。</p>
+<p>2）提取前视图特征<br>前视图给俯视图提供了额外的信息。由于激光点云非常稀疏的时候，投影到2D图上也会非常稀疏。相反，我们将它投影到一个圆柱面生成一个稠密的前视图。 假设3D坐标为<br><img src="https://raw.githubusercontent.com/harrylin-hyl/FigureBed/master/image/20200221002911.png" alt="20200221002911.png"><br>那么他的前视图坐标<br><img src="https://raw.githubusercontent.com/harrylin-hyl/FigureBed/master/image/20200221002928.png" alt="20200221002928.png"><br>可以通过如下式子计算<br><img src="https://raw.githubusercontent.com/harrylin-hyl/FigureBed/master/image/20200221002901.png" alt="20200221002901.png"></p>
 
         </div>
         
@@ -218,11 +206,11 @@ git clone https://github.com/ppoffice/hexo-theme-icarus.git themes/icarus</code>
                     </li>
                     <li class="post-copyright-link">
                     <strong>本文链接：</strong>
-                    <a href="" title="{{ page.title }}">Github+Hexo+icarus创建自定义blog</a>
+                    <a href="" title="{{ page.title }}">3D物体检测(一)</a>
                     </li>
                     <li class="post-copyright-link">
                     <strong>发布时间：</strong>
-                    <a href="" title="{{ page.title }}">2020年2月2日 - 15时02分</a>
+                    <a href="" title="{{ page.title }}">2020年2月21日 - 16时02分</a>
                     </li>
                     <li class="post-copyright-license">
                     <strong>版权声明： </strong>
@@ -237,7 +225,7 @@ git clone https://github.com/ppoffice/hexo-theme-icarus.git themes/icarus</code>
                 <div class="level-item">
                     <span class="is-size-6 has-text-grey has-mr-7">#</span>
                     <!-- <i class="fas fa-tags has-text-grey"></i>&nbsp; -->
-                    <a class="has-link-grey -link" href="/tags/github/" rel="tag">github</a>, <a class="has-link-grey -link" href="/tags/hexo/" rel="tag">hexo</a>, <a class="has-link-grey -link" href="/tags/icarus/" rel="tag">icarus</a>
+                    <a class="has-link-grey -link" href="/tags/%E7%82%B9%E4%BA%91%E3%80%813D%E7%89%A9%E4%BD%93%E6%A3%80%E6%B5%8B/" rel="tag">点云、3D物体检测</a>
                 </div>
             </div>
         </div>
@@ -287,17 +275,10 @@ git clone https://github.com/ppoffice/hexo-theme-icarus.git themes/icarus</code>
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
         
-        <div class="level-start">
-            <a class="level level-item has-link-grey  article-nav-prev" href="/2020/02/04/%E8%AF%AD%E4%B9%89%E5%88%86%E5%89%B2%E4%B8%AD%E7%9A%84loss%E6%80%BB%E7%BB%93/">
-                <i class="level-item fas fa-chevron-left"></i>
-                <span class="level-item">语义分割中的损失</span>
-            </a>
-        </div>
-        
         
         <div class="level-end">
-            <a class="level level-item has-link-grey  article-nav-next" href="/2020/02/02/%E4%B8%BA%E8%87%AA%E5%AE%9A%E4%B9%89%E5%8D%9A%E5%AE%A2%E6%B7%BB%E5%8A%A0%E8%AF%84%E8%AE%BA%E5%8A%9F%E8%83%BD/">
-                <span class="level-item">为自定义博客添加评论功能</span>
+            <a class="level level-item has-link-grey  article-nav-next" href="/2020/02/14/%E7%82%B9%E4%BA%91%E5%9F%BA%E4%BA%8E%E5%9B%BE%E8%AE%BA%E7%9A%84%E5%A4%84%E7%90%86%E6%96%B9%E6%B3%95/">
+                <span class="level-item">点云基于图论的处理方法</span>
                 <i class="level-item fas fa-chevron-right"></i>
             </a>
         </div>
@@ -318,7 +299,7 @@ git clone https://github.com/ppoffice/hexo-theme-icarus.git themes/icarus</code>
     var gitalk = new Gitalk({
         clientID: 'bac59b9114cfee309c54',
         clientSecret: '2cf48e13436b28376f072ac3458ba37cff59f37b',
-        id: '2670f1005d3279382ae0a62b149d4b7c',
+        id: '027d817be9f827de7bd32f091a4cd9f7',
         repo: 'harrylin-hyl.github.io',
         owner: 'harrylin-hyl',
         admin: "harrylin-hyl",
@@ -444,30 +425,26 @@ git clone https://github.com/ppoffice/hexo-theme-icarus.git themes/icarus</code>
                     目录
                 </h3>
                 <ul class="menu-list"><li>
-        <a class="is-flex" href="#在GitHub上申请个人主页">
+        <a class="is-flex" href="#MV3D-Net">
         <span class="has-mr-6">1</span>
-        <span>在GitHub上申请个人主页</span>
-        </a></li><li>
-        <a class="is-flex" href="#安装Hexo">
-        <span class="has-mr-6">2</span>
-        <span>安装Hexo</span>
+        <span>MV3D-Net</span>
         </a><ul class="menu-list"><li>
-        <a class="is-flex" href="#安装Hexo-1">
-        <span class="has-mr-6">2.1</span>
-        <span>安装Hexo</span>
+        <a class="is-flex" href="#具体思想">
+        <span class="has-mr-6">1.1</span>
+        <span>具体思想</span>
         </a></li><li>
-        <a class="is-flex" href="#配置主题">
-        <span class="has-mr-6">2.2</span>
-        <span>配置主题</span>
+        <a class="is-flex" href="#核心部分">
+        <span class="has-mr-6">1.2</span>
+        <span>核心部分</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#网络结构">
+        <span class="has-mr-6">1.2.1</span>
+        <span>网络结构</span>
         </a></li><li>
-        <a class="is-flex" href="#FAQ">
-        <span class="has-mr-6">2.3</span>
-        <span>FAQ</span>
-        </a></li></ul></li><li>
-        <a class="is-flex" href="#个性化设置">
-        <span class="has-mr-6">3</span>
-        <span>个性化设置</span>
-        </a></li></ul>
+        <a class="is-flex" href="#提取特征">
+        <span class="has-mr-6">1.2.2</span>
+        <span>提取特征</span>
+        </a></li></ul></li></ul></li></ul>
             </div>
         </div>
     </div>
@@ -490,7 +467,7 @@ git clone https://github.com/ppoffice/hexo-theme-icarus.git themes/icarus</code>
             <div class="level-start has-text-centered-mobile">
                 <a class="footer-logo is-block has-mb-6" href="/">
                 
-                    <img src="/images/harrylin.ico" alt="Github+Hexo+icarus创建自定义blog" height="28">
+                    <img src="/images/harrylin.ico" alt="3D物体检测(一)" height="28">
                 
                 </a>
                 <p class="is-size-7">
