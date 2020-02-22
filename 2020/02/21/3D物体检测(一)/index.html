@@ -10,16 +10,16 @@
 <title>3D物体检测(一) - harrylin&#39;s blog</title>
 
 
-    <meta name="description" content="总结一下在bilibili上看到的基于点云场景的三维物体检测算法及应用,有兴趣的也可以去看看这个视频。这一部分主要总结一下，结合雷达点云数据和相机采集的二维图像数据的方法。主要包括: MV3D-Net、F-PointNet、MMF">
+    <meta name="description" content="总结一下在bilibili上看到的基于点云场景的三维物体检测算法及应用,有兴趣的也可以去看看这个视频。这一部分主要总结一下，结合雷达点云数据和相机采集的二维图像数据的方法。主要包括: MV3D-Net、F-PointNet">
 <meta property="og:type" content="article">
 <meta property="og:title" content="3D物体检测(一)">
 <meta property="og:url" content="http://yoursite.com/2020/02/21/3D%E7%89%A9%E4%BD%93%E6%A3%80%E6%B5%8B(%E4%B8%80)/index.html">
 <meta property="og:site_name" content="harrylin&#39;s blog">
-<meta property="og:description" content="总结一下在bilibili上看到的基于点云场景的三维物体检测算法及应用,有兴趣的也可以去看看这个视频。这一部分主要总结一下，结合雷达点云数据和相机采集的二维图像数据的方法。主要包括: MV3D-Net、F-PointNet、MMF">
+<meta property="og:description" content="总结一下在bilibili上看到的基于点云场景的三维物体检测算法及应用,有兴趣的也可以去看看这个视频。这一部分主要总结一下，结合雷达点云数据和相机采集的二维图像数据的方法。主要包括: MV3D-Net、F-PointNet">
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://raw.githubusercontent.com/harrylin-hyl/FigureBed/master/image/20200204164422.png">
 <meta property="article:published_time" content="2020-02-21T08:40:40.000Z">
-<meta property="article:modified_time" content="2020-02-20T16:36:12.294Z">
+<meta property="article:modified_time" content="2020-02-21T14:29:43.553Z">
 <meta property="article:author" content="harrylin">
 <meta property="article:tag" content="点云、3D物体检测">
 <meta name="twitter:card" content="summary">
@@ -150,6 +150,8 @@
                 <!-- <time class="level-item has-text-grey" datetime="2020-02-21T08:40:40.000Z">2020-02-21</time> -->
                 <time class="level-item has-text-grey" datetime="2020-02-21T08:40:40.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-02-21</time>
                 
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-02-21T14:29:43.553Z"><i class="far fa-calendar-check">&nbsp;</i>2020-02-21</time>
+                
                 
                 <div class="level-item">
                 <a class="has-link-grey -link" href="/categories/3D%E7%89%A9%E4%BD%93%E6%A3%80%E6%B5%8B/">3D物体检测</a>
@@ -159,7 +161,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    6 分钟 读完 (大约 852 个字)
+                    11 分钟 读完 (大约 1628 个字)
                 </span>
                 
                 
@@ -172,7 +174,7 @@
              -->
         </h1>
         <div class="content">
-            <p>总结一下在bilibili上看到的<a href="https://www.bilibili.com/video/av89811975">基于点云场景的三维物体检测算法及应用</a>,有兴趣的也可以去看看这个视频。<br>这一部分主要总结一下，结合雷达点云数据和相机采集的二维图像数据的方法。<br>主要包括: MV3D-Net、F-PointNet、MMF</p>
+            <p>总结一下在bilibili上看到的<a href="https://www.bilibili.com/video/av89811975">基于点云场景的三维物体检测算法及应用</a>,有兴趣的也可以去看看这个视频。<br>这一部分主要总结一下，结合雷达点云数据和相机采集的二维图像数据的方法。<br>主要包括: MV3D-Net、F-PointNet</p>
 <a id="more"></a>
 <hr>
 <h2 id="MV3D-Net"><a href="#MV3D-Net" class="headerlink" title="MV3D-Net"></a>MV3D-Net</h2><p>Multi-View 3D Object Detection Network for Autonomous Driving</p>
@@ -197,6 +199,15 @@
 <p><img src="https://raw.githubusercontent.com/harrylin-hyl/FigureBed/master/image/20200221002758.png" alt="20200221002758.png"></p>
 <p>其中N为单元格中的点的数目。强度和密度特征计算的是整个点云，而高度特征是计算M切片，所以，总的俯视图被编码为（M + 2）个通道的特征。</p>
 <p>2）提取前视图特征<br>前视图给俯视图提供了额外的信息。由于激光点云非常稀疏的时候，投影到2D图上也会非常稀疏。相反，我们将它投影到一个圆柱面生成一个稠密的前视图。 假设3D坐标为<br><img src="https://raw.githubusercontent.com/harrylin-hyl/FigureBed/master/image/20200221002911.png" alt="20200221002911.png"><br>那么他的前视图坐标<br><img src="https://raw.githubusercontent.com/harrylin-hyl/FigureBed/master/image/20200221002928.png" alt="20200221002928.png"><br>可以通过如下式子计算<br><img src="https://raw.githubusercontent.com/harrylin-hyl/FigureBed/master/image/20200221002901.png" alt="20200221002901.png"></p>
+<h2 id="Frustum-PointNet"><a href="#Frustum-PointNet" class="headerlink" title="Frustum-PointNet"></a>Frustum-PointNet</h2><ul>
+<li>上述的PointNet和PointNet++主要用于点云数据的分类和分割问题，Frustum-PointNet（F-PointNet）将PointNet的应用拓展到了3D目标检测上。目前单纯基于Lidar数据的3D目标检测算法通常对小目标检测效果不佳，为了处理这个问题，F-PointNet提出了结合基于图像的2D检测算法来定位目标，再用其对应的点云数据视锥进行bbox回归的方法来实现3D目标检测。F-PointNet的网络结构如下图所示。<br><img src="https://raw.githubusercontent.com/harrylin-hyl/FigureBed/master/image/20200128220644.png" alt="20200128220644.png"><br>可以看到，F-PointNet主要由以下几部分构成：</li>
+<li>视锥生成（frustum proposal）：<br>首先通过2D目标检测器来定位图片中的目标以及判断它们的类别。对每一个检测到的目标，通过标定好的传感器的内参和它们之间的转换矩阵得到其对应的点云数据中的各点，即点云视锥。作者使用的2D目标检测模型是基于VGG网络的FPN作为特征提取器，并用Fast R-CNN来预测最终的2D bbox。</li>
+<li>3D实例分割（3D instance segmentation）:<br>对每个得到的点云视锥，通过旋转得到以中心视角为坐标轴的点云数据。对转换后的点云数据用PointNet（或PointNet++）进行实例分割。实例分割是一个二分类问题，用于判断每个点属于某个目标或者不属于。</li>
+<li>3D边界框回归（3D box estimation）:<br>将上一步实例分割的结果作为mask得到属于某个实例的所有点云，计算其质心作为新的坐标系原点。通过一个T-Net进行回归得到目标质心和当前坐标原点的残差。将点云平移到计算得到的目标质心后，通过PointNet（或PointNet++）对3D bbox的中心、尺寸和朝向进行回归得到最终的输出。此步骤采用的回归方式和Faster R-CNN中类似，不直接回归，而是回归到不同尺寸和朝向的锚点（anchors）。</li>
+</ul>
+<p>综上所述，F-PointNet是一个多步骤的3D目标检测算法。如下图所示，为了应对点云数据中各个目标的视角不变性和得到更准确的bbox回归（通过缩小需要回归的值的取值范围），算法需要进行三次坐标转换。模型的loss和2D的目标检测一样是包含分类以及回归的多任务loss。同时，作者提出了一种被称为corner loss的损失函数来对目标的中心、朝向和大小进行联合优化，避免由于某一方面的不准确而主导loss。</p>
+<p><img src="https://raw.githubusercontent.com/harrylin-hyl/FigureBed/master/image/20200128220851.png" alt="20200128220851.png"></p>
+<p>详细参考： <a href="https://blog.csdn.net/u011507206/article/details/89106892">https://blog.csdn.net/u011507206/article/details/89106892</a></p>
 
         </div>
         
@@ -274,6 +285,13 @@
 
 <div class="card card-transparent">
     <div class="level post-navigation is-flex-wrap is-mobile">
+        
+        <div class="level-start">
+            <a class="level level-item has-link-grey  article-nav-prev" href="/2020/02/22/3D%E7%89%A9%E4%BD%93%E6%A3%80%E6%B5%8B(%E4%BA%8C)/">
+                <i class="level-item fas fa-chevron-left"></i>
+                <span class="level-item">3D物体检测(二)</span>
+            </a>
+        </div>
         
         
         <div class="level-end">
@@ -356,7 +374,7 @@
                     </p>
                     <a href="/archives">
                         <p class="title has-text-weight-normal">
-                            9
+                            10
                         </p>
                     </a>
                 </div>
@@ -444,7 +462,11 @@
         <a class="is-flex" href="#提取特征">
         <span class="has-mr-6">1.2.2</span>
         <span>提取特征</span>
-        </a></li></ul></li></ul></li></ul>
+        </a></li></ul></li></ul></li><li>
+        <a class="is-flex" href="#Frustum-PointNet">
+        <span class="has-mr-6">2</span>
+        <span>Frustum-PointNet</span>
+        </a></li></ul>
             </div>
         </div>
     </div>
