@@ -19,7 +19,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://raw.githubusercontent.com/harrylin-hyl/FigureBed/master/image/20200204164422.png">
 <meta property="article:published_time" content="2020-02-22T09:09:40.000Z">
-<meta property="article:modified_time" content="2020-02-22T09:37:53.228Z">
+<meta property="article:modified_time" content="2020-02-23T10:14:28.304Z">
 <meta property="article:author" content="harrylin">
 <meta property="article:tag" content="3D物体检测">
 <meta property="article:tag" content="点云">
@@ -151,7 +151,7 @@
                 <!-- <time class="level-item has-text-grey" datetime="2020-02-22T09:09:40.000Z">2020-02-22</time> -->
                 <time class="level-item has-text-grey" datetime="2020-02-22T09:09:40.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-02-22</time>
                 
-                <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-02-22T09:37:53.228Z"><i class="far fa-calendar-check">&nbsp;</i>2020-02-22</time>
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-02-23T10:14:28.304Z"><i class="far fa-calendar-check">&nbsp;</i>2020-02-23</time>
                 
                 
                 <div class="level-item">
@@ -162,7 +162,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    4 分钟 读完 (大约 578 个字)
+                    8 分钟 读完 (大约 1130 个字)
                 </span>
                 
                 
@@ -194,7 +194,16 @@
 <li><p>提取local点的特征，将其与之前的语义特征连接起来，进行再一次更精确的回归和分类。第二阶段的回归除了也使用基于bin的方式之外，还需要对不同方向和位置的框进行对齐，减少旋转对结果带来的影响。论文中还考虑对深度信息进行补偿，因为较远的物体点云会比较近的物体来得少。</p>
 </li>
 </ul>
-<h2 id="Part-A-2"><a href="#Part-A-2" class="headerlink" title="Part-A^2"></a>Part-A^2</h2>
+<h2 id="Part-A-2"><a href="#Part-A-2" class="headerlink" title="Part-A^2"></a>Part-A^2</h2><p>Part-A2 Net: 3D Part-Aware and Aggregation Neural Network for Object Detection from Point Cloud</p>
+<h3 id="具体思想-1"><a href="#具体思想-1" class="headerlink" title="具体思想"></a>具体思想</h3><p>点云和2D图像有一点不同，点云中的点在给定标记框的前提下在物体中的位置是已知的，而图像中是不能判定的。所以针对这个优势和先验，设计了part-Aware和part-Aggregation两个结构，取得更好的效果。</p>
+<h3 id="核心部分-1"><a href="#核心部分-1" class="headerlink" title="核心部分"></a>核心部分</h3><h4 id="网络结构"><a href="#网络结构" class="headerlink" title="网络结构"></a>网络结构</h4><p><img src="https://raw.githubusercontent.com/harrylin-hyl/FigureBed/master/image/20200223174940.png" alt="20200223174940.png"></p>
+<p>整个网络也是two-stage的。如图所示左侧为part-Aware部分，也即第一阶段，右侧是part-Aggregation，也即精确回归的第二阶段。<br>点云encoder部分用的类似unet结构，方法用的将点云网格化，用sparse convolution更为高效处理像点云这种比较稀疏的数据类型。</p>
+<h4 id="part-Aware"><a href="#part-Aware" class="headerlink" title="part-Aware"></a>part-Aware</h4><p>在标记框确定的前提下，物体中的点在框中的位置就是已知的了。所以说这个先验的标签是易得的。第一部分语义分割的同时，预测物体中的点在框中的位置，计算公式如下图所示：<br><img src="https://raw.githubusercontent.com/harrylin-hyl/FigureBed/master/image/20200223175806.png" alt="20200223175806.png"></p>
+<p>中心点为(0.5,0.5,0.5)，第一个公式是将标记框对齐、摆正。前一部分是移除平移，第二部分是旋转矩阵对齐。第二部分就是将标签投影[0,1]这一个区间中。损失函数用binary cross entropy loss：</p>
+<p><img src="https://raw.githubusercontent.com/harrylin-hyl/FigureBed/master/image/20200223180317.png" alt="20200223180317.png"></p>
+<h4 id="part-Aggregation"><a href="#part-Aggregation" class="headerlink" title="part-Aggregation"></a>part-Aggregation</h4><p>这个方法是为了解决如下图的情况所导致的歧义：<br><img src="https://raw.githubusercontent.com/harrylin-hyl/FigureBed/master/image/20200223180417.png" alt="20200223180417.png"></p>
+<p>上图中的三个框如果用roi-pool进行计算，那么结果都是一样的。这个情况给网络带来了负面影响，为了解决这个情况，其实也是给点云定义相对位置，设置一系列的小网格，对每一个小网格进行特征提取，空位置的设为0，这样就把位置信息编码到特征中去了。再进行进一步的精确回归。</p>
+
         </div>
         
                 <ul class="post-copyright">
@@ -437,7 +446,27 @@
         <a class="is-flex" href="#Part-A-2">
         <span class="has-mr-6">2</span>
         <span>Part-A^2</span>
-        </a></li></ul>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#具体思想-1">
+        <span class="has-mr-6">2.1</span>
+        <span>具体思想</span>
+        </a></li><li>
+        <a class="is-flex" href="#核心部分-1">
+        <span class="has-mr-6">2.2</span>
+        <span>核心部分</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#网络结构">
+        <span class="has-mr-6">2.2.1</span>
+        <span>网络结构</span>
+        </a></li><li>
+        <a class="is-flex" href="#part-Aware">
+        <span class="has-mr-6">2.2.2</span>
+        <span>part-Aware</span>
+        </a></li><li>
+        <a class="is-flex" href="#part-Aggregation">
+        <span class="has-mr-6">2.2.3</span>
+        <span>part-Aggregation</span>
+        </a></li></ul></li></ul></li></ul>
             </div>
         </div>
     </div>
