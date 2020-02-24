@@ -19,7 +19,7 @@
 <meta property="og:locale" content="zh_CN">
 <meta property="og:image" content="https://raw.githubusercontent.com/harrylin-hyl/FigureBed/master/image/20200204164422.png">
 <meta property="article:published_time" content="2020-02-22T09:09:40.000Z">
-<meta property="article:modified_time" content="2020-02-23T10:14:28.304Z">
+<meta property="article:modified_time" content="2020-02-24T04:30:43.950Z">
 <meta property="article:author" content="harrylin">
 <meta property="article:tag" content="3D物体检测">
 <meta property="article:tag" content="点云">
@@ -151,7 +151,7 @@
                 <!-- <time class="level-item has-text-grey" datetime="2020-02-22T09:09:40.000Z">2020-02-22</time> -->
                 <time class="level-item has-text-grey" datetime="2020-02-22T09:09:40.000Z"><i class="far fa-calendar-alt">&nbsp;</i>2020-02-22</time>
                 
-                <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-02-23T10:14:28.304Z"><i class="far fa-calendar-check">&nbsp;</i>2020-02-23</time>
+                <time class="level-item has-text-grey is-hidden-mobile" datetime="2020-02-24T04:30:43.950Z"><i class="far fa-calendar-check">&nbsp;</i>2020-02-24</time>
                 
                 
                 <div class="level-item">
@@ -162,7 +162,7 @@
                 <span class="level-item has-text-grey">
                     
                     
-                    8 分钟 读完 (大约 1130 个字)
+                    14 分钟 读完 (大约 2037 个字)
                 </span>
                 
                 
@@ -203,6 +203,23 @@
 <p><img src="https://raw.githubusercontent.com/harrylin-hyl/FigureBed/master/image/20200223180317.png" alt="20200223180317.png"></p>
 <h4 id="part-Aggregation"><a href="#part-Aggregation" class="headerlink" title="part-Aggregation"></a>part-Aggregation</h4><p>这个方法是为了解决如下图的情况所导致的歧义：<br><img src="https://raw.githubusercontent.com/harrylin-hyl/FigureBed/master/image/20200223180417.png" alt="20200223180417.png"></p>
 <p>上图中的三个框如果用roi-pool进行计算，那么结果都是一样的。这个情况给网络带来了负面影响，为了解决这个情况，其实也是给点云定义相对位置，设置一系列的小网格，对每一个小网格进行特征提取，空位置的设为0，这样就把位置信息编码到特征中去了。再进行进一步的精确回归。</p>
+<h2 id="PV-RCNN"><a href="#PV-RCNN" class="headerlink" title="PV-RCNN"></a>PV-RCNN</h2><p>PV-RCNN: Point-Voxel Feature Set Abstraction for 3D Object Detection</p>
+<h3 id="具体思想-2"><a href="#具体思想-2" class="headerlink" title="具体思想"></a>具体思想</h3><p>将voxel-based和PointNet-based方法进行结合。结合voxel方法卷积的高效和提取特征的有效性，又结合利用原始点云的精确的位置信息和pointNet++感受野(也即半径大小)设置的灵活性。<br>主要是通过two-stage的方法来实现，这两个部分分别可以用Voxel-to-keypoint和Keypoint-to-grid来概括其主要思想。</p>
+<h3 id="核心部分-2"><a href="#核心部分-2" class="headerlink" title="核心部分"></a>核心部分</h3><h4 id="网络结构-1"><a href="#网络结构-1" class="headerlink" title="网络结构"></a>网络结构</h4><p><img src="https://raw.githubusercontent.com/harrylin-hyl/FigureBed/master/image/20200224115446.png" alt="20200224115446.png"></p>
+<p>如图所示，整个框架有以下几个步骤：</p>
+<ul>
+<li>将原始点云用3D sparse convolution生成网格化的特征。</li>
+<li>将下采样八倍的特征图投影到BEV(将Z轴特征堆叠到一起,生成俯视图)。生成3D推荐框，每一个像素每一类生成两个推荐框，分别是0度和90度。和前面两种方法不一样，这篇论文使用的是anchor-base的方法，但是具有更高的recall值。</li>
+<li>用FPS(最远点采样)，采样到分布均与的KeyPoint。</li>
+<li>用类似pointNet++，set abstraction的方式，将Keypoint半径大小以内的voxel特征进行聚合，得到具有精确位置信息，不规则的点云特征。</li>
+<li>Predicted Keypoint Weighting模块，每一个关键点的权重是不一样的，主要是在于作者认为前景点的权重要大于背景点的权重影响。</li>
+<li>Keypoint-to-grid，一样通过set abstraction方式进行聚合成规则的网格信息，红色点为网格点不是真实点云中的点，黄色为Keypoint，生成特征之后进行refine推荐框。</li>
+</ul>
+<h4 id="Voxel-to-keypoint"><a href="#Voxel-to-keypoint" class="headerlink" title="Voxel-to-keypoint"></a>Voxel-to-keypoint</h4><p>首先通过FPS采样到具有精确位置信息的KeyPoints，定义感受野半径，分别在3D sparse convolution 提取特征的multi layer中具有周围的voxel特征，具体方式是落下感受野半径下voxel，随机采样$T_k$个，然后用多层感知机对每个voxel提取特征后取Max。如图所示:</p>
+<p><img src="https://raw.githubusercontent.com/harrylin-hyl/FigureBed/master/image/20200224121649.png" alt="20200224121649.png"></p>
+<p>将多个layer的特征连接起来，包括原始点云的特征和BEV经过双线性插值之后的特征。形成最终的KeyPoints特征。<br>再经过Keypoint Weighting module对每一个点的权重进行估计，如图所示：<br><img src="https://raw.githubusercontent.com/harrylin-hyl/FigureBed/master/image/20200224122006.png" alt="20200224122006.png"><br>也即前景点的predict和特征相乘，这样前景点的权重就会大于背景点。</p>
+<h4 id="Keypoint-to-grid"><a href="#Keypoint-to-grid" class="headerlink" title="Keypoint-to-grid"></a>Keypoint-to-grid</h4><p><img src="https://raw.githubusercontent.com/harrylin-hyl/FigureBed/master/image/20200224122303.png" alt="20200224122303.png"></p>
+<p>如图所示，红点代表网格点，淡黄表示KeyPoint，深黄表示原始点。用网格点为中心，设置可变半径去聚合附近的KeyPoint的特征，将KeyPoint的特征规则化，重新变为Voxel类型的特征。这样做有两个好处：1. 提取Voxel特征时可以采集到框以外，物体边界的信息，对推荐框refine有好处。2. 大大减少了0值特征，减少了特征空间的稀疏性。<br>这个地方提取特征的方法与Voxel-to-keypoint上图的公式一样，都是经过随机采样再用MLP进行特征提取，最后取Max。值得注意的是，这两个地方都用了多个不同大小的半径，保证多个感受野的特征能更有效的提取特征。</p>
 
         </div>
         
@@ -466,6 +483,30 @@
         <a class="is-flex" href="#part-Aggregation">
         <span class="has-mr-6">2.2.3</span>
         <span>part-Aggregation</span>
+        </a></li></ul></li></ul></li><li>
+        <a class="is-flex" href="#PV-RCNN">
+        <span class="has-mr-6">3</span>
+        <span>PV-RCNN</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#具体思想-2">
+        <span class="has-mr-6">3.1</span>
+        <span>具体思想</span>
+        </a></li><li>
+        <a class="is-flex" href="#核心部分-2">
+        <span class="has-mr-6">3.2</span>
+        <span>核心部分</span>
+        </a><ul class="menu-list"><li>
+        <a class="is-flex" href="#网络结构-1">
+        <span class="has-mr-6">3.2.1</span>
+        <span>网络结构</span>
+        </a></li><li>
+        <a class="is-flex" href="#Voxel-to-keypoint">
+        <span class="has-mr-6">3.2.2</span>
+        <span>Voxel-to-keypoint</span>
+        </a></li><li>
+        <a class="is-flex" href="#Keypoint-to-grid">
+        <span class="has-mr-6">3.2.3</span>
+        <span>Keypoint-to-grid</span>
         </a></li></ul></li></ul></li></ul>
             </div>
         </div>
