@@ -1,29 +1,41 @@
-<!-- # 📝 Publications
+# 📝 Publications
 
 ## Selected Publications
 
-### Multi-View Learning
-<div class='paper-box'><div class='paper-box-image'><div><div class="badge">CVPR 2025</div><img src='images/CVPR.png' alt="sym" width="100%"></div></div>
+### MLLM Reasoning Segmentation
+<div class='paper-box'><div class='paper-box-image'><div><div class="badge">ICML 2026</div><img src='images/icml26.png' alt="sym" width="100%"></div></div>
 <div class='paper-box-text' markdown="1">
 
-[A Paper Title](link)
+[DR$^2$Seg: Decomposed Two-Stage Rollouts for Efficient Reasoning Segmentation in Multimodal Large Language Models](https://arxiv.org/pdf/2601.09981)
 
-**Harry Lin**, Co-authors.
+**Yulin He**, Wei Chen, Zhikang Jian, Tianhang Guo, Wenjuan Zhou, Minglong Li, Shaowu Yang, and Wenjing Yang.
 
-**Conference Name 2025**
+**ICML 2026**
 
 </div>
 </div>
 
-### Graph Learning
-<div class='paper-box'><div class='paper-box-image'><div><div class="badge">NeurIPS 2024</div><img src='images/NeurIPS.png' alt="sym" width="100%"></div></div>
+### MLLM Reasoning Detection
+<div class='paper-box'><div class='paper-box-image'><div><div class="badge">AAAI 2026</div><img src='images/AAAI26-1.png' alt="sym" width="100%"></div></div>
 <div class='paper-box-text' markdown="1">
 
-[Another Paper Title](link)
+[Attention to Threat-Relevant Objects: Reasoning Detection in Autonomous Driving via Multimodal Large Language Models](https://ojs.aaai.org/index.php/AAAI/article/view/42470)
 
-**Harry Lin**, Co-authors.
+**Yulin He**, Wei Chen, Xinbiao Gan, Siqi Wang, Haotian Wang, and Yusong Tan.
 
-**NeurIPS 2024**
+**AAAI 2026**
 
 </div>
-</div> -->
+</div>
+
+<div class='paper-box'><div class='paper-box-image'><div><div class="badge">AAAI 2026</div><img src='images/AAAI26-2.png' alt="sym" width="100%"></div></div>
+<div class='paper-box-text' markdown="1">
+
+[Explain then Detect: Language-Enhanced Temporal Reasoning for Driver Behavior Monitoring](link)
+
+**Yulin He**, Wei Chen, Xinbiao Gan, Siqi Wang, Haotian Wang, and Yusong Tan.
+
+**AAAI 2026**
+
+</div>
+</div>

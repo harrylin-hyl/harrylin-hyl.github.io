@@ -1,9 +1,9 @@
 # 🎖 Services
 
-<!-- ## Conferences -->
+## Conferences
 
 - Reviewer: ICML/NeurIPS/CVPR/ICCV/AAAI/ACM MM
 
-<!-- ## Journals
+## Journals
 
-- Reviewer: IEEE TPAMI/TIP/TNNLS/TKDE/TCYB/TMM/TCVST -->
+- Reviewer: IEEE TPAMI/TIP/TMM/NN
