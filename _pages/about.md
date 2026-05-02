@@ -9,6 +9,8 @@ author_profile: true
 
 {% include_relative includes/intro.md %}
 
+{% include_relative includes/news.md %}
+
 <!-- # 📖 Educations
 - *2020.09 - 2025.12,  Doctor, Computer Science,  National University of Defense Technology, Changsha.
 - *2016.09 - 2020.06,  Bachelor, Software Engineering, Wuhan University. -->
