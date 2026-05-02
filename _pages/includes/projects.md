@@ -1,5 +1,5 @@
-# 📝 Projects
+<!-- # 📝 Projects
 
 ## Multi-modal Fusion
 
-## Scalable Unsupervised Learning
+## Scalable Unsupervised Learning -->

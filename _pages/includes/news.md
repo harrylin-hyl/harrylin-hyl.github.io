@@ -1,4 +1,4 @@
-# 🔥 News
+<!-- # 🔥 News
 - *2026.01*: &nbsp;🎉🎉 One paper is accepted in IEEE TKDE(CCF-A).
 - *2025.09*: &nbsp;🎉🎉 Two paper is accepted in AAAI2026(CCF-A).
 - *2025.06*: &nbsp;🎉🎉 One paper is accepted in ICCV25(CCF-A).
@@ -16,4 +16,4 @@
 - *2023.08*: &nbsp;🎉🎉 one paper is accepted in TNNLS23(CCF-B). 
 - *2023.07*: &nbsp;🎉🎉 one paper is accepted in [ICCV23](https://iccv2023.thecvf.com/)(CCF-A). 
 - *2023.02*: &nbsp;🎉🎉 accept to serve as reviewer for [ACM MM23](https://2023.acmmm.org/)(CCF-A). 
-- *2022.07*: &nbsp;🎉🎉 one paper is accepted in [ACM MM22](https://2022.acmmm.org/)(CCF-A). 
+- *2022.07*: &nbsp;🎉🎉 one paper is accepted in [ACM MM22](https://2022.acmmm.org/)(CCF-A).  -->
