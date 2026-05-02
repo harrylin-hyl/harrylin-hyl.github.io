@@ -1,4 +1,4 @@
-<!-- # 🔥 News
+# 🔥 News
 - *2026.05*: &nbsp;🎉🎉 One paper is accepted in ICML'26 (CCF-A).
 - *2026.03*: &nbsp;🎉🎉 Two paper are accepted in ICME'26 (CCF-B).
 - *2025.11*: &nbsp;🎉🎉 One paper is accepted in AAAI'26 (CCF-A).
