@@ -55,7 +55,7 @@
 </div>
 
 ### Open-World Object Detection
-<div class='paper-box'><div class='paper-box-image'><div><div class="badge">TIP 24</div><img src='images/ACMMM24.png' alt="sym" width="100%"></div></div>
+<div class='paper-box'><div class='paper-box-image'><div><div class="badge">TIP 24</div><img src='images/TIP24.png' alt="sym" width="100%"></div></div>
 <div class='paper-box-text' markdown="1">
 
 [Recalling Unknowns Without Losing Precision: An Effective Solution to Large Model-Guided Open World Object Detection](https://ieeexplore.ieee.org/document/10684083)
