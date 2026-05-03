@@ -1,6 +1,6 @@
 # 📝 Publications
 
-## Selected Publications
+## Main Publications
 
 ### MLLM Reasoning Segmentation
 <div class='paper-box'><div class='paper-box-image'><div><div class="badge">ICML 2026</div><img src='images/icml26.png' alt="sym" width="100%"></div></div>
