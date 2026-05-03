@@ -6,4 +6,4 @@ Since 2026, I have been working as a postdoctoral researcher at the National Uni
 
 My current research focuses on ***multimodal large model reasoning and perception***, ***open-world perception***, and ***multimodal learning***. As the first author, I have published papers at top-tier AI venues, including ICML, AAAI, ACM MM, and IEEE TIP. I also serve as a reviewer for leading conferences such as ICML, NeurIPS, CVPR, ICCV, AAAI, and ACM MM.
 
-If you are seeking any form of ***academic cooperation***, please feel free to email me.
+If you are seeking any form of ***academic cooperation***, please feel free to email me (heyulin@nudt.edu.cn).
